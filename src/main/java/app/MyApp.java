@@ -40,7 +40,8 @@ public class MyApp {
 		
 
 		taiKhoanDAO = new TaiKhoanImpl();
-		taiKhoanDAO.getTaiKhoan_maNV("NV00006").forEach(nv -> System.out.println(nv));
+	
+		taiKhoanDAO.getDsTaiKhoan().forEach(tk -> System.out.println(tk));
 
 
 

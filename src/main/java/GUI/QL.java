@@ -10,7 +10,8 @@ import dao.NhanvienDAO;
 import dao.impl.NhanvienImpl;
 import entity.NhanVien;
 
-/**
+/**NOTE
+ * NV chuaw cos ttk thi khonog ddc vaof suaw tk
  *
  * @author LENOVO
  */
