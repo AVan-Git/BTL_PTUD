@@ -39,12 +39,6 @@ public abstract interface NhanvienDAO {
 	 */
 	public List<NhanVien> getDsNhanVien_soDT(List<NhanVien> lists , String maTim);
 	/**
-	 * tim kiem KhachHang theo ten
-	 * @param tenTim
-	 * @return ds NhanVien
-	 */
-	public 	List<NhanVien> getDsNhanVien_Ten(List<NhanVien> lists, String maTim);
-	/**
 	 * danh sach NhanVien 
 	 * @param tenTim
 	 * @return ds NhanVien
@@ -55,6 +49,12 @@ public abstract interface NhanvienDAO {
 	 * @return
 	 */
 	public String getMaCuoiNV();
+	/**
+	 * tim kiem KhachHang theo ten
+	 * @param tenTim
+	 * @return ds NhanVien
+	 */
+	public 	List<NhanVien> getDsNhanVien_Ten(List<NhanVien> lists, String maTim);
 	/**
 	 * danh sach NhanVien 
 	 * @param tenTim
@@ -73,7 +73,7 @@ public abstract interface NhanvienDAO {
 	 * @param maTim
 	 * @return
 	 */
-	public List<NhanVien> getDsNhanVien_Calam(List<NhanVien> lists , String cb);
+	public List<NhanVien> getDsNhanVien_calam(String macl);
 	/**
 	 * tim kiem NhanVien theo mã người quản lý
 	 * @param maTim

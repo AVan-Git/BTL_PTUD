@@ -142,7 +142,7 @@ public class NhanVien {
 	@Override
 	public String toString() {
 		return "NhanVien [maNV=" + maNV + ", tenNV=" + tenNV + ", namSinh=" + namSinh + ", soDT=" + soDT + ", diaChi="
-				+ diaChi + ", caLam=" + caLam + ", QuanLyNV=" + QuanLyNV.getMaNV() + "]";
+				+ diaChi + ", caLam=" + caLam + "]";
 	}
 
 

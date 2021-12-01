@@ -141,11 +141,6 @@ public class NhanvienImpl implements NhanvienDAO {
 		return 0;
 	}
 
-	@Override
-	public List<NhanVien> getDsNhanVien_soDT(List<NhanVien> lists, String maTim) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<NhanVien> getDsNhanVien_Ten(List<NhanVien> lists, String maTim) {
@@ -168,7 +163,7 @@ public class NhanvienImpl implements NhanvienDAO {
 			try {
 				tr.begin(); // bat dau
 
-				String query = "SELECT * FROM [QLCuaHangSach].[dbo].[NhanVien]  where [tenKH] like N'%" + maTim + "%'";
+				String query = "SELECT * FROM [QLCuaHangSach].[dbo].[NhanVien]  where [tenNV] like N'%" + maTim + "%'";
 
 				dsNhanVien = session.createNativeQuery(query, NhanVien.class).getResultList();
 
@@ -210,7 +205,36 @@ public class NhanvienImpl implements NhanvienDAO {
 
 	@Override
 	public List<NhanVien> getDsNhanVien_DiaChi(List<NhanVien> lists, String DiaChiTim) {
-		// TODO Auto-generated method stub
+		if (lists.size() != 0) {
+			List<NhanVien> dsNhanVien = new ArrayList<>();
+			for (NhanVien a : lists) {
+				if (a.getDiaChi().matches(".*" + DiaChiTim + ".*")) {
+//					maCheck.matches("DH1[1-6][A-Z]")
+					dsNhanVien.add(a);
+				}
+			}
+			
+			return dsNhanVien;
+		} else {
+			Session session = sessionFactory.getCurrentSession(); // goi den csdl
+
+			Transaction tr = session.getTransaction(); // giups stop khi co lỗi
+
+			List<NhanVien> dsNhanVien = new ArrayList<>();
+			try {
+				tr.begin(); // bat dau
+
+				String query = "  SELECT * FROM [QLCuaHangSach].[dbo].[NhanVien]  where [diaChi] like N'%"+ DiaChiTim +"%'";
+
+				dsNhanVien = session.createNativeQuery(query, NhanVien.class).getResultList();
+
+				tr.commit(); // ket thuc
+				return dsNhanVien;
+			} catch (Exception e) {
+				e.printStackTrace();
+				tr.rollback(); // quay lai khi co loi
+			}
+		}
 		return null;
 	}
 
@@ -266,9 +290,24 @@ public class NhanvienImpl implements NhanvienDAO {
 	}
 
 	@Override
-	public List<NhanVien> getDsNhanVien_Calam(List<NhanVien> lists, String cb) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<NhanVien> getDsNhanVien_calam(String macl) {
+		List<NhanVien> dsNhanVien = new ArrayList<>();
+//		int calam = Integer.parseInt(cbbCaLam.getSelectedItem().toString());
+		NhanVien nv = null;
+		Session session = sessionFactory.getCurrentSession();
+		Transaction tr = session.getTransaction();
+		try {
+			tr.begin();
+			String sql ="SELECT * FROM [dbo].[NhanVien] where caLam= :x ";
+			dsNhanVien= session.createNativeQuery(sql ,NhanVien.class).setParameter("x", macl).getResultList();
+			tr. commit();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			tr.rollback();
+		}
+		return dsNhanVien;
 	}
 
 	@Override
@@ -336,6 +375,41 @@ public class NhanvienImpl implements NhanvienDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			tr.rollback(); // quay lai khi co loi
+		}
+		return null;
+	}
+
+	@Override
+	public List<NhanVien> getDsNhanVien_soDT(List<NhanVien> lists, String soDT_Tim) {
+		if (lists.size() != 0) {
+			List<NhanVien> dsNhanVien = new ArrayList<>();
+			for (NhanVien a : lists) {
+				if (a.getSoDT().matches(".*" + soDT_Tim + ".*")) {
+//					maCheck.matches("DH1[1-6][A-Z]")
+					dsNhanVien.add(a);
+				}
+			}
+			
+			return dsNhanVien;
+		} else {
+			Session session = sessionFactory.getCurrentSession(); // goi den csdl
+
+			Transaction tr = session.getTransaction(); // giups stop khi co lỗi
+
+			List<NhanVien> dsNhanVien = new ArrayList<>();
+			try {
+				tr.begin(); // bat dau
+
+				String query = "  SELECT * FROM [QLCuaHangSach].[dbo].[NhanVien]  where [soDT] like N'%"+ soDT_Tim +"%'";
+
+				dsNhanVien = session.createNativeQuery(query, NhanVien.class).getResultList();
+
+				tr.commit(); // ket thuc
+				return dsNhanVien;
+			} catch (Exception e) {
+				e.printStackTrace();
+				tr.rollback(); // quay lai khi co loi
+			}
 		}
 		return null;
 	}

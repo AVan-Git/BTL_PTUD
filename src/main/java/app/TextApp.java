@@ -81,6 +81,8 @@ public class TextApp extends JFrame implements ActionListener{
 			JOptionPane.showMessageDialog(this, "Thanh toán hóa đơn không thành công. \nSố tiền chưa đủ.");
 			return false;
 		}
+		int gia = 5000;
+		JOptionPane.showMessageDialog(this, "Số tiền dư là: "+(x-gia));
 		System.out.println(tien);
 		System.out.println(x);
 		return true;

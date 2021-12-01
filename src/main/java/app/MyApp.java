@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import dao.NhaXuatBanDAO;
 import dao.NhanvienDAO;
 import dao.TacGiaDAO;
@@ -34,21 +36,20 @@ public class MyApp {
 
 	public static void main(String[] args) {
 
-		sachDAO = new SachImpl();
+		nhanvienDAO = new NhanvienImpl();
 		
 		System.out.println("Complete!");
 		
-		List<String> list = sachDAO.getDsLoaiSach();
-		if (list.size() > 0) {
-			for (String a : list) {
-				System.out.println(a);
-			}
-			
-		}
 		
 
+        NhanVien a = new NhanVien("NV00001", "System Admin", new Date(2001 - 1900, 01, 01), "0123456789", "Việt Nam", -1);
+        System.out.println(a);
 
-
+        
+        if (nhanvienDAO.suaNhanVien(a)) {
+			System.out.println("TRUE");
+		}
+        else System.out.println("False");
 
 	}
 
