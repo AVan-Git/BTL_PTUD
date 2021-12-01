@@ -257,6 +257,8 @@ public class Timkiemkhach extends JFrame  implements ActionListener {
 //        
         modelTable = (DefaultTableModel) table.getModel();
         addTable_sql();
+
+		table.setDefaultEditor(Object.class, null);
 //        addComboBox();
         
     }// </editor-fold>//GEN-END:initComponents
@@ -265,7 +267,8 @@ public class Timkiemkhach extends JFrame  implements ActionListener {
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
     private void XActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XActionPerformed
-    	new QL(QL.taiKhoan).setVisible(true);
+
+		new QL(QL.taiKhoan).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_XActionPerformed
 

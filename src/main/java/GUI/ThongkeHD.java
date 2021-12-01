@@ -154,7 +154,7 @@ public class ThongkeHD extends javax.swing.JFrame {
 
     private void XActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XActionPerformed
         // TODO add your handling code here:
-    	new QL(QL.taiKhoan).setVisible(true);
+		new QL(QL.taiKhoan).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_XActionPerformed
 

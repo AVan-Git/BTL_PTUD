@@ -34,7 +34,7 @@ public class Chamcong extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -69,7 +69,7 @@ public class Chamcong extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Chấm công");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -80,7 +80,7 @@ public class Chamcong extends javax.swing.JFrame {
                 "Lương cơ bản", "Số giờ làm", "Tiền phạt", "Tiền thưởng", "Tổng lương"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table);
 
         X.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         X.setForeground(new java.awt.Color(255, 0, 0));
@@ -172,6 +172,9 @@ public class Chamcong extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
+        
+
+		table.setDefaultEditor(Object.class, null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void XActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XActionPerformed
@@ -226,10 +229,11 @@ public class Chamcong extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    
     // End of variables declaration//GEN-END:variables
 }

@@ -66,7 +66,7 @@ public class TaiKhoan {
 
 	@Override
 	public String toString() {
-		return "TaiKhoan [tenTK=" + tenTK + ", matKhau=" + matKhau + ", nhanVien=" + nhanVien.getMaNV() + "]";
+		return "TaiKhoan [tenTK=" + tenTK + ", matKhau=" + matKhau + ", nhanVien=" + nhanVien + "]";
 	}
 
 	

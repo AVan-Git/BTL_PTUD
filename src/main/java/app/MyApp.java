@@ -34,14 +34,19 @@ public class MyApp {
 
 	public static void main(String[] args) {
 
-		nhanvienDAO = new NhanvienImpl();
+		sachDAO = new SachImpl();
 		
 		System.out.println("Complete!");
 		
+		List<String> list = sachDAO.getDsLoaiSach();
+		if (list.size() > 0) {
+			for (String a : list) {
+				System.out.println(a);
+			}
+			
+		}
+		
 
-		taiKhoanDAO = new TaiKhoanImpl();
-	
-		taiKhoanDAO.getDsTaiKhoan().forEach(tk -> System.out.println(tk));
 
 
 

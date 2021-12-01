@@ -286,6 +286,8 @@ public class QLKH_LapHD extends JFrame implements ActionListener, MouseListener 
 //      
 		modelTable = (DefaultTableModel) table.getModel();
 		addTable_sql();
+
+		table.setDefaultEditor(Object.class, null);
 //	
 		addComboBox();
 

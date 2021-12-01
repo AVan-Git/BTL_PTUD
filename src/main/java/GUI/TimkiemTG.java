@@ -232,6 +232,7 @@ public class TimkiemTG extends JFrame implements ActionListener {
 		modelTable = (DefaultTableModel) table.getModel();
 		addTable_sql(tacGiaDAO.getDsTacGia());
 
+		table.setDefaultEditor(Object.class, null);
 
 	}// </editor-fold>//GEN-END:initComponents
 

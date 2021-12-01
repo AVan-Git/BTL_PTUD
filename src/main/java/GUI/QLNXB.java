@@ -210,6 +210,8 @@ public class QLNXB extends JFrame implements ActionListener, MouseListener {
 
 		addTable_sql(nhaXBDAO.getDsNhaXuatBan());
 
+		table.setDefaultEditor(Object.class, null);
+
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void XActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_XActionPerformed

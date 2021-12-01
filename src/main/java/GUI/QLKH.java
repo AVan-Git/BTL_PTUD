@@ -27,8 +27,8 @@ public class QLKH extends JFrame implements ActionListener, MouseListener {
 	/**
 	 * Creates new form QLKH
 	 */
-	public QLKH(String x) {
-		initComponents( x);
+	public QLKH() {
+		initComponents();
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class QLKH extends JFrame implements ActionListener, MouseListener {
 	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// Code">//GEN-BEGIN:initComponents
-	private void initComponents(String x) {
+	private void initComponents() {
 
 		jPanel1 = new javax.swing.JPanel();
 		jLabel1 = new javax.swing.JLabel();
@@ -105,19 +105,12 @@ public class QLKH extends JFrame implements ActionListener, MouseListener {
 		X.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 		X.setForeground(new java.awt.Color(255, 0, 0));
 		X.setText("X");
-		if (x.equals("LapHD")) {
-			X.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					XActionPerformed2(evt);
-				}
-			});
-		}else {
 			X.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
 					XActionPerformed(evt);
 				}
 			});
-		}
+		
 
 		jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 		jLabel5.setForeground(new java.awt.Color(255, 102, 0));
@@ -282,17 +275,14 @@ public class QLKH extends JFrame implements ActionListener, MouseListener {
 //	
 		addComboBox();
 
+		table.setDefaultEditor(Object.class, null);
+
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void XActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_XActionPerformed
 		// TODO add your handling code here:
 		String tk = QL.taiKhoan;
         new QL(tk).setVisible(true);
-		this.setVisible(false);
-	}// GEN-LAST:event_XActionPerformed
-	private void XActionPerformed2(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_XActionPerformed
-		// TODO add your handling code here:
-//		new LapHD().setVisible(true);
 		this.setVisible(false);
 	}// GEN-LAST:event_XActionPerformed
 
@@ -329,7 +319,7 @@ public class QLKH extends JFrame implements ActionListener, MouseListener {
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new QLKH("").setVisible(true);
+				new QLKH().setVisible(true);
 			}
 		});
 	}

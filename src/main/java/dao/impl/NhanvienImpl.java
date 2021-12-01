@@ -317,27 +317,27 @@ public class NhanvienImpl implements NhanvienDAO {
 		return null;
 	}
 
-//	@Override
-//	public List<NhanVien> getDsNhanVien_NguoiQL(String maNguoiQL) {
-//		Session session = sessionFactory.getCurrentSession(); // goi den csdl
-//
-//		Transaction tr = session.getTransaction(); // giups stop khi co lỗi
-//		try {
-//			tr.begin(); // bat dau
-//
-//			List<NhanVien> list = new ArrayList<>();
-//
-//			String sql = "SELECT * FROM     NhanVien 	WHERE quanLyId like '"+maNguoiQL+"'";
-//
-//			list = session.createNativeQuery(sql, NhanVien.class).getResultList();
-//
-//			tr.commit(); // ket thuc
-//			return list;
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			tr.rollback(); // quay lai khi co loi
-//		}
-//		return null;
-//	}
+	@Override
+	public List<NhanVien> getDsNhanVien_NguoiQL(String maNguoiQL) {
+		Session session = sessionFactory.getCurrentSession(); // goi den csdl
+
+		Transaction tr = session.getTransaction(); // giups stop khi co lỗi
+		try {
+			tr.begin(); // bat dau
+
+			List<NhanVien> list = new ArrayList<>();
+
+			String sql = "SELECT * FROM     NhanVien 	WHERE quanLyId like '"+maNguoiQL+"'";
+
+			list = session.createNativeQuery(sql, NhanVien.class).getResultList();
+
+			tr.commit(); // ket thuc
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			tr.rollback(); // quay lai khi co loi
+		}
+		return null;
+	}
 
 }

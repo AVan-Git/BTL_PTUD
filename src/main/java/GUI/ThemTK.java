@@ -50,7 +50,8 @@ public class ThemTK extends JFrame implements ActionListener {
 	private NhanvienDAO nhanvienDAO = new NhanvienImpl();
 	private TaiKhoanDAO taiKhoanDAO = new TaiKhoanImpl();
 
-	private String tk = "Admin";
+//	private String tk = "Admin";
+	private String tk = QL.taiKhoan;
 	
 
 	NhanVien nvQL = nhanvienDAO.getNhanVien_TaiKhoan(tk);

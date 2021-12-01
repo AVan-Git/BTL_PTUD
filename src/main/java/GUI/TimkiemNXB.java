@@ -182,16 +182,14 @@ public class TimkiemNXB extends JFrame implements ActionListener{
         modelTable = (DefaultTableModel) table.getModel();
         
         addTable_sql(nhaXBDAO.getDsNhaXuatBan());
-        
-        
-        
-        
+
+		table.setDefaultEditor(Object.class, null);        
     }// </editor-fold>//GEN-END:initComponents
 
 
     private void XActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XActionPerformed
         // TODO add your handling code here:
-    	new QL(QL.taiKhoan).setVisible(true);
+		new QL(QL.taiKhoan).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_XActionPerformed
 

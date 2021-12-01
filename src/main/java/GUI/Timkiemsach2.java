@@ -234,6 +234,8 @@ public class Timkiemsach2 extends JFrame implements ActionListener{
 //        
 		modelSach = (DefaultTableModel) tableSach.getModel();
 		addTable_Sql(sachDAO.getDsSach());
+
+		tableSach.setDefaultEditor(Object.class, null);
 //    
 		addCbb_Sql();
         

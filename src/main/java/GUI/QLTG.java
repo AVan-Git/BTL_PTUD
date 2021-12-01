@@ -12,8 +12,12 @@ import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import GUI.Dialog.FormTieuSu;
+import dao.NhanvienDAO;
 import dao.TacGiaDAO;
 import dao.impl.TacGiaImpl;
+import entity.NhanVien;
+import entity.Sach;
 import entity.TacGia;
 
 /*
@@ -258,8 +262,9 @@ public class QLTG extends JFrame implements ActionListener, MouseListener {
 
 //      
 		modelTable = (DefaultTableModel) table.getModel();
-
 		addTable_sql(tacGiaDAO.getDsTacGia());
+
+		table.setDefaultEditor(Object.class, null);
 
 		addComboBox();
 	}// </editor-fold>//GEN-END:initComponents
@@ -348,6 +353,13 @@ public class QLTG extends JFrame implements ActionListener, MouseListener {
 		txtMa.setText(modelTable.getValueAt(row, 0).toString());
 		txtTen.setText(modelTable.getValueAt(row, 1).toString());
 		txtDiaChi.setText(modelTable.getValueAt(row, 3).toString());
+		
+		TacGia a = tacGiaDAO.getTacGia_Id(modelTable.getValueAt(row, 0).toString());
+		if (a.getTieusu() != null) {
+			txtTieuSu.setText("Double click vào tên tác giả để xem tiểu sử.");
+		}else {
+			txtTieuSu.setText("");
+		}
 //		
 		String ngaySinh = modelTable.getValueAt(row, 2).toString();
 
@@ -371,8 +383,19 @@ public class QLTG extends JFrame implements ActionListener, MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
+		if (e.getClickCount() == 2) {
+			int row = table.getSelectedRow();
 
+			String maNV = modelTable.getValueAt(row, 0).toString();
+			System.out.println(maNV);
+			TacGia a = tacGiaDAO.getTacGia_Id(maNV);
+			System.out.println(a);
+			if (a.getTieusu() == null) {
+				JOptionPane.showMessageDialog(this,
+						"Tác giả " + a.getTenTG() + " chưa có tiểu sử.\n Hãy cập nhật lại.");
+			} else
+				new FormTieuSu(a.getTieusu()).setVisible(true);
+		}
 	}
 
 	@Override
@@ -428,6 +451,10 @@ public class QLTG extends JFrame implements ActionListener, MouseListener {
 		String ma = txtMa.getText().trim();
 		String ten = txtTen.getText().trim();
 		String diaChi = txtDiaChi.getText().trim();
+		String tieuSu = txtTieuSu.getText();
+		if (tieuSu.equals("Double click vào tên tác giả để xem tiểu sử.")) {
+			tieuSu = null;
+		}
 
 		if (JOptionPane.showConfirmDialog(this,
 				"Bạn có muốn sửa lại thông tin cho mã:' " + ma + " ' có tên là:' " + ten + " '" + " không?", "Cảnh Báo",
@@ -437,7 +464,7 @@ public class QLTG extends JFrame implements ActionListener, MouseListener {
 			int mm = Integer.parseInt(cbbThang.getSelectedItem().toString()) - 1;
 			int yy = Integer.parseInt(cbbNam.getSelectedItem().toString());
 
-			TacGia a = new TacGia(ma, ten, new Date(yy - 1900, mm, dd), diaChi, null);
+			TacGia a = new TacGia(ma, ten, new Date(yy - 1900, mm, dd), diaChi, tieuSu);
 
 			if (tacGiaDAO.suaTacGia(a)) {
 
@@ -453,12 +480,13 @@ public class QLTG extends JFrame implements ActionListener, MouseListener {
 		String ma = phatSinhMa();
 		String hoten = txtTen.getText().trim();
 		String diaChi = txtDiaChi.getText().trim();
+		String tieuSu = txtTieuSu.getText();
 
 		int dd = Integer.parseInt(cbbNgay.getSelectedItem().toString());
 		int mm = Integer.parseInt(cbbThang.getSelectedItem().toString()) - 1;
 		int yy = Integer.parseInt(cbbNam.getSelectedItem().toString());
 
-		TacGia a = new TacGia(ma, hoten, new Date(yy - 1900, mm, dd), diaChi, null);
+		TacGia a = new TacGia(ma, hoten, new Date(yy - 1900, mm, dd), diaChi, tieuSu);
 		if (tacGiaDAO.themTacGia(a)) {
 			JOptionPane.showMessageDialog(this, "Thêm thành công.");
 
@@ -470,6 +498,7 @@ public class QLTG extends JFrame implements ActionListener, MouseListener {
 		txtMa.setText(phatSinhMa());
 		txtTen.setText("");
 		txtDiaChi.setText("");
+		txtTieuSu.setText("");
 //	
 		btnSua.setEnabled(false);
 		btnXoa.setEnabled(false);
@@ -600,12 +629,11 @@ public class QLTG extends JFrame implements ActionListener, MouseListener {
 			ma_new = ma0_2 + "0" + n;
 		} else if (n < 99999) {
 			ma_new = ma0_2 + "" + n;
-		} else
-		{
+		} else {
 			ma_new = "KH99999";
 			System.err.println("Full ma");
 			JOptionPane.showMessageDialog(this, "Bộ nhớ đã bị đầy");
-			
+
 		}
 		return ma_new;
 	}

@@ -65,6 +65,8 @@ public abstract interface SachDAO {
 	public List<Sach> getDsSach_TacGia(List<Sach> lists , String tacGiaTim);
 	public List<Sach> getDsSach_NhaXB(List<Sach> lists , String nhaXBTim);
 
+	public List<String> getDsLoaiSach();
+
 
 
 

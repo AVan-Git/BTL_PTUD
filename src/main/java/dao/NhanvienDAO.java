@@ -81,7 +81,7 @@ public abstract interface NhanvienDAO {
 	 */
 	public NhanVien getNhanVien_TaiKhoan(String tk);
 	public int soNhanVienDuocQL(String maNV);
-//	public List<NhanVien> getDsNhanVien_NguoiQL(String maNguoiQL);
+	public List<NhanVien> getDsNhanVien_NguoiQL(String maNguoiQL);
 	public List<NhanVien> getDsNhanVien_0_NguoiQL();
 	
 	

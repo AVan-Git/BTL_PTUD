@@ -342,6 +342,28 @@ public  class SachImpl implements SachDAO{
 		}
 	}
 
+	@Override
+	public List<String> getDsLoaiSach() {
+		Session session = sessionFactory.getCurrentSession();
+		
+		Transaction tr = session.getTransaction();
+		try {
+			tr.begin();
+			
+			String query ="SELECT DISTINCT  [loai]	FROM [QLCuaHangSach].[dbo].[Sach]";
+			@SuppressWarnings("unchecked")
+			List<String> dsLoai =(List<String>) session.createNativeQuery(query).getResultList();
+			
+			tr.commit();
+			return dsLoai;
+		} catch (Exception e) {
+			tr.rollback();
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
 	
 	
 

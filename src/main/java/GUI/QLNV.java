@@ -303,6 +303,8 @@ public class QLNV extends javax.swing.JFrame implements ActionListener, MouseLis
 //      
 		modelTable = (DefaultTableModel) tableQLNV.getModel();
 		addTable_sql();
+
+		tableQLNV.setDefaultEditor(Object.class, null);
 //	
 		addComboBox();
     }// </editor-fold>//GEN-END:initComponents

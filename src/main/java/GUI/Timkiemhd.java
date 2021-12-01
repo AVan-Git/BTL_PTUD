@@ -178,6 +178,7 @@ public class Timkiemhd extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
+
     }// </editor-fold>                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -186,7 +187,7 @@ public class Timkiemhd extends javax.swing.JFrame {
 
     private void XActionPerformed(java.awt.event.ActionEvent evt) {                                  
         // TODO add your handling code here:
-    	new QL(QL.taiKhoan).setVisible(true);
+		new QL(QL.taiKhoan).setVisible(true);
         this.setVisible(false);
     }                                 
 

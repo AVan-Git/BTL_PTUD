@@ -697,11 +697,14 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 //    
 		addCbb_Sql();
 
+		tableDonDat.setDefaultEditor(Object.class, null);
+
+		tableSach.setDefaultEditor(Object.class, null);
+
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void XActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_XActionPerformed
 		// TODO add your handling code here:
-		String tk = QL.taiKhoan;
         new QL(tk).setVisible(true);
 		this.setVisible(false);
 	}// GEN-LAST:event_XActionPerformed
@@ -851,6 +854,7 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 		if (kh == null) {
 			return;
 		}
+		
 
 		String tenNV = txtTenNV.getText().trim();
 		String maNV = "NV" + tenNV.substring(0, 5);

@@ -234,6 +234,8 @@ public class Timkiemsach extends JFrame implements ActionListener{
 //        
 		modelSach = (DefaultTableModel) tableSach.getModel();
 		addTable_Sql(sachDAO.getDsSach());
+
+		tableSach.setDefaultEditor(Object.class, null);
 //    
 		addCbb_Sql();
         
@@ -246,7 +248,7 @@ public class Timkiemsach extends JFrame implements ActionListener{
 
     private void X1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_X1ActionPerformed
         // TODO add your handling code here:
-    	new QL(QL.taiKhoan).setVisible(true);
+		new QL(QL.taiKhoan).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_X1ActionPerformed
 

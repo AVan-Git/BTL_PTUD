@@ -220,6 +220,8 @@ public class Timkiemnhanvien extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
+
+		tableNV.setDefaultEditor(Object.class, null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxThangSinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxThangSinhActionPerformed
@@ -232,7 +234,7 @@ public class Timkiemnhanvien extends javax.swing.JFrame {
 
     private void X1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_X1ActionPerformed
         // TODO add your handling code here:
-    	new QL(QL.taiKhoan).setVisible(true);
+		new QL(QL.taiKhoan).setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_X1ActionPerformed
 
