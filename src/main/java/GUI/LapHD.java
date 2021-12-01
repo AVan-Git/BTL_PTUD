@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -108,6 +109,7 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 	CT_HoaDonDAO ct_HoaDonDAO = new CT_HoaDonImpl();
 	NhanvienDAO nhanvienDAO = new NhanvienImpl();
 
+	private DecimalFormat dformat = new DecimalFormat("###,###,###.00 VND");
 	/**
 	 * Creates new form LapHD
 	 */
@@ -855,7 +857,10 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 			return;
 		}
 		
-
+		if (!setThanhToan()) {
+			return;
+		}
+		
 		String tenNV = txtTenNV.getText().trim();
 		String maNV = "NV" + tenNV.substring(0, 5);
 
@@ -886,6 +891,30 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 
 		JOptionPane.showMessageDialog(this, "Thanh Toán thành công.\n Hẹn gặp lại.");
 
+	}
+
+	private boolean setThanhToan() {
+		double tongTien = Double.parseDouble(txtTongTien.getText().trim());
+		String tien = JOptionPane.showInputDialog("Hãy nhập số tiền khách hàng gửi.");
+		if(tien == null) {
+			JOptionPane.showMessageDialog(this, "Thanh toán hóa đơn không thành công.");
+			return false;
+		}
+		double x = 0.0;
+		try {
+			x = Double.parseDouble(tien);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this, "Hãy nhập bằng ký tự số");
+			return false;
+		}
+		
+		if (x < tongTien) {
+			JOptionPane.showMessageDialog(this, "Thanh toán hóa đơn không thành công. \nSố tiền chưa đủ.");
+			return false;
+		}
+		JOptionPane.showMessageDialog(this, "Số tiền dư là: "+dformat.format(x-tongTien));
+		return true;
+		
 	}
 
 	private Date getNgayLap() {
@@ -951,7 +980,6 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 	//
 	private void getThemSach_HoaDon() {
 		int row = tableSach.getSelectedRow();
-		System.out.println(row);
 		if (row >= 0) {
 			String soLuongTable = modelSach.getValueAt(row, 6).toString();
 			if (check_SoLuong(soLuongTable)) {
