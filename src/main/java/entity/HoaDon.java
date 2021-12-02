@@ -37,6 +37,36 @@ public class HoaDon {
 	@JoinColumn(name = "maDD", referencedColumnName = "maDD", nullable = true)
 	public DonDat donDat ;
 
+	public NhanVien getNhanVien() {
+		return nhanVien;
+	}
+
+
+	public void setNhanVien(NhanVien nhanVien) {
+		this.nhanVien = nhanVien;
+	}
+
+
+	public KhachHang getKhachHang() {
+		return khachHang;
+	}
+
+
+	public void setKhachHang(KhachHang khachHang) {
+		this.khachHang = khachHang;
+	}
+
+
+	public DonDat getDonDat() {
+		return donDat;
+	}
+
+
+	public void setDonDat(DonDat donDat) {
+		this.donDat = donDat;
+	}
+
+
 	public String getMaHD() {
 		return maHD;
 	}
