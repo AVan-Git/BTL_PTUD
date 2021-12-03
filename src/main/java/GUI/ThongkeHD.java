@@ -68,7 +68,7 @@ public class ThongkeHD extends JFrame implements ActionListener {
 
 	private List<HoaDon> dsHoaDon = hoaDonDAO.getDsHoaDon();
 
-	private SimpleDateFormat dformat = new SimpleDateFormat("DD-MM-YYYY");
+	private SimpleDateFormat dformat = new SimpleDateFormat("dd-MM-yyyy");
 
 	/**
 	 * Creates new form ThongkeHD

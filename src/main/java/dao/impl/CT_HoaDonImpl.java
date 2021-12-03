@@ -101,6 +101,29 @@ public class CT_HoaDonImpl implements CT_HoaDonDAO {
 		return null;
 	}
 
+	@Override
+	public List<CT_HoaDon> getDsCT_HoaDon(String maHD) {
+		Session session = sessionFactory.getCurrentSession(); // goi den csdl
+
+		Transaction tr = session.getTransaction(); // giups stop khi co lỗi
+		try {
+			tr.begin(); // bat dau
+
+			List<CT_HoaDon> list = new ArrayList<>();
+
+			String sql = "SELECT * FROM [dbo].[CT_HoaDon] WHERE [maHD] like '"+maHD+"'";
+
+			list = session.createNativeQuery(sql, CT_HoaDon.class).getResultList();
+
+			tr.commit(); // ket thuc
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			tr.rollback(); // quay lai khi co loi
+		}
+		return null;
+	}
+
 
 
 

@@ -55,27 +55,13 @@ public class MyApp {
 		
 		hoaDonDAO = new HoaDonImpl();
 		System.out.println("Complete!");
-		List<HoaDon> dsHoaDon = hoaDonDAO.getDsHoaDon();
-		for (HoaDon hd : dsHoaDon) {
-			if (hd.getNgaylap().getMonth() == getHienTai().getMonth()) {
-				System.out.println(hd);
-			}
-//			if (hd.getNgaylap().compareTo(getHienTai()) == 0) {
-//				System.out.println(hd);
-//			}
-		}
+		
+		HoaDon hd = hoaDonDAO.getHoaDon_Id("HD00002");
+		System.out.println(hd);
 
 	}
 //	
-	private static Date getHienTai() {
-		GregorianCalendar gcalendar = new GregorianCalendar();
 
-		int dd = gcalendar.get(Calendar.DATE);
-		int mm = gcalendar.get(Calendar.MONTH);
-		int yy = gcalendar.get(Calendar.YEAR);
-		Date a = new Date(yy - 1900, mm, dd);
-		return a;
-	}
 
 
 }

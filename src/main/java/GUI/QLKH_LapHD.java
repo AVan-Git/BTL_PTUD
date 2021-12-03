@@ -116,16 +116,7 @@ public class QLKH_LapHD extends JFrame implements ActionListener, MouseListener 
         X.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 		X.setForeground(new java.awt.Color(255, 0, 0));
 		X.setText("X");
-		if (X.equals("LapHD")) {
-			X.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent evt) {
-					XActionPerformed2(evt);
-					new LapHD().setVisible(true);
-					new LapHD().setVisible(false);
-				
-				}
-			});
-		}else {
+		
 			X.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
 					XActionPerformed(evt);
@@ -133,7 +124,7 @@ public class QLKH_LapHD extends JFrame implements ActionListener, MouseListener 
 					new LapHD().setVisible(false);
 				}
 			});
-		}
+		
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 102, 0));
@@ -295,13 +286,6 @@ public class QLKH_LapHD extends JFrame implements ActionListener, MouseListener 
 
 	private void XActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_XActionPerformed
 		// TODO add your handling code here:
-		String tk = QL.taiKhoan;
-        new QL(tk).setVisible(true);
-		this.setVisible(false);
-	}// GEN-LAST:event_XActionPerformed
-	private void XActionPerformed2(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_XActionPerformed
-		// TODO add your handling code here:
-//		new LapHD().setVisible(true);
 		this.setVisible(false);
 	}// GEN-LAST:event_XActionPerformed
 

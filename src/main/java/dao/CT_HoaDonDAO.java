@@ -31,6 +31,12 @@ public abstract interface CT_HoaDonDAO {
 	 * @return ds CT_HoaDon
 	 */
 	public List<CT_HoaDon> getDsCT_HoaDon();
+	/**
+	 * danh sach CT_HoaDon 
+	 * @param tenTim
+	 * @return ds CT_HoaDon
+	 */
+	public List<CT_HoaDon> getDsCT_HoaDon(String maHD);
 
 
 
