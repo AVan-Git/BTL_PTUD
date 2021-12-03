@@ -267,6 +267,8 @@ public class ThemTK extends JFrame implements ActionListener {
 
 		cbbNhanVien.addActionListener(this);
 //        
+		txtTenNV.setEditable(false);
+		txtSoDTNV.setEditable(false);
 		addCBB_sql();
 
 //        
@@ -411,7 +413,7 @@ public class ThemTK extends JFrame implements ActionListener {
 			} else
 				err = "Mật khẩu từ 6 đến 20 kí tự, bao gồm: \nÍt nhất 1 kí tự chữ in hoa. \n"
 						+ "Ít nhất 1 kí tự chữ in thường. \nÍt nhất 1 kí tự số. \nÍt nhất 1 kí tự đặc biệt(!@#$%^&*()_+-=";
-			getERR(txtPass, err);
+			return getERR(txtPass, err);
 		}
 
 		return true;

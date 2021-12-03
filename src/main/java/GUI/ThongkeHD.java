@@ -407,13 +407,13 @@ public class ThongkeHD extends JFrame implements ActionListener ,MouseListener {
 		if (ma2 != 8) {
 			Date dateBD = dateStart.getCalendar().getTime();
 			Date dateKT = dateEnd.getCalendar().getTime();
-			
-			System.out.println(dateBD);			
-			System.out.println(dateKT);
+			if (dateKT.compareTo(dateBD) < 0) {
+				JOptionPane.showMessageDialog(this, "Ngày kết thúc phải lớn hơn ngày bắt đầu");
+			}
 			
 			List<HoaDon> list = new ArrayList<>();
 			for (HoaDon hd : dsHoaDon) {
-				if (hd.getNgaylap().compareTo(dateBD) >= 0 && hd.getNgaylap().compareTo(dateBD) <= 0 ) {
+				if (hd.getNgaylap().compareTo(dateBD) >= 0 && hd.getNgaylap().compareTo(dateKT) <= 0 ) {
 					list.add(hd);
 				}
 			}

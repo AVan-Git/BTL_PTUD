@@ -21,6 +21,7 @@ import dao.TacGiaDAO;
 import dao.impl.NhaXuatBanImpl;
 import dao.impl.SachImpl;
 import dao.impl.TacGiaImpl;
+import entity.KhachHang;
 import entity.NhaXuatBan;
 import entity.Sach;
 import entity.TacGia;
@@ -638,10 +639,77 @@ public class QLSach extends JFrame implements ActionListener, MouseListener {
 	}
 
 //	
+
 	private boolean check_data() {
-		// TODO Auto-generated method stub
+		String maCheck = txtTen.getText().trim();
+		String mess = "";
+
+		if (!(maCheck.length() > 0 && maCheck.matches("^[A-Z]{1}.*"))) {
+			if (maCheck.length() == 0) {
+				mess = "Hãy nhập tên sách.";
+			} else {
+				mess = "Tên sách bản phải có chữ hoa bắt đầu.";
+			}
+			getMess(txtTen, mess);
+			return false;
+		}
+		//
+		int row = cbbTheLoai.getSelectedIndex();
+		if (row == 0) {
+			JOptionPane.showMessageDialog(this, "Hãy chọn thể loại cho sách.");
+			return false;
+		}
+
+		//
+		row = cbbTacGia.getSelectedIndex();
+		if (row == 0) {
+			JOptionPane.showMessageDialog(this, "Hãy chọn tác giả cho sách.");
+			return false;
+		}
+		//
+		row = cbbNhaXB.getSelectedIndex();
+		if (row == 0) {
+			JOptionPane.showMessageDialog(this, "Hãy chọn nhà xuất bản cho sách.");
+			return false;
+		}
+		//
+		maCheck = txtGiaThanh.getText().trim();
+		try {
+			double gia = Double.parseDouble(maCheck);
+			if (gia < 1000) {
+				getMess(txtGiaThanh, "Giá thành phải trên 1000 VND");
+				return false;
+			}
+		} catch (Exception e) {
+			getMess(txtGiaThanh, "Hãy nhập giá thành bằng chữ số.");
+			return false;
+		}
+
+		//
+		maCheck = txtSoLuong.getText().trim();
+		try {
+			int gia = Integer.parseInt(maCheck);
+			if (gia < 0) {
+				getMess(txtGiaThanh, "Số lượng không được để số âm.");
+				return false;
+			}
+		} catch (Exception e) {
+			getMess(txtGiaThanh, "Hãy nhập số lượng thành bằng chữ số.");
+			return false;
+		}
+		
+		//
 		return true;
 	}
+
+//
+	private void getMess(JTextField txt, String mess) {
+		JOptionPane.showMessageDialog(this, mess);
+		txt.selectAll();
+		txt.requestFocus();
+	}
+
+
 //	
 
 	@Override

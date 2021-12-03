@@ -647,8 +647,25 @@ public class QLTG extends JFrame implements ActionListener, MouseListener {
 	}
 //
 
-	private boolean check_data() {
-		// TODO Auto-generated method stub
+private boolean check_data() {
+		String ten= txtTen.getText().trim();;
+		
+		
+		if (!(ten.length() > 0 && ten.matches("^[AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ]+[aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]*(\\s*[AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ]+[aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]*)$"))) {
+
+			if (ten.length() == 0) {
+				JOptionPane.showMessageDialog(this, "Hãy nhập tên tác giả.");
+			} else {
+				JOptionPane.showMessageDialog(this,
+						"Tên tác giả không sử dụng ký tự đặc biệt(!@#$%^&*...)." );
+			}
+			txtTen.selectAll();
+			txtTen.requestFocus();
+			return false;
+		}
+		
+	
+
 		return true;
 	}
 
