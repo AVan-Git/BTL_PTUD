@@ -266,6 +266,7 @@ public class QLKH_LapHD extends JFrame implements ActionListener, MouseListener 
 		btnLapHD.addActionListener(this);
 		btnRefresh.addActionListener(this);
 		table.addMouseListener(this);
+		txtEmail.addActionListener(this);
 
 		txtMa.setEnabled(false);
 		btnSua.setEnabled(false);
@@ -407,7 +408,7 @@ public class QLKH_LapHD extends JFrame implements ActionListener, MouseListener 
 		Object o = arg0.getSource();
 		if (o.equals(btnRefresh)) {
 			XoaRongJText();
-		} else if (o.equals(btnThem)) {
+		} else if (o.equals(btnThem)|| o.equals(txtEmail)) {
 
 			if (check_data()) {
 				getThemKhachHang();
@@ -645,8 +646,105 @@ public class QLKH_LapHD extends JFrame implements ActionListener, MouseListener 
 	}
 
 	private boolean check_data() {
-		// TODO Auto-generated method stub
+		String maCheck = txtHoTen.getText().trim();
+		String mess = "";
 
+		if (!(maCheck.length() > 0 && maCheck.matches(
+				"^([ẮẰẲẴẶĂẤẦẨẪẬÂÁÀÃẢẠĐẾỀỂỄỆÊÉÈẺẼẸÍÌỈĨỊỐỒỔỖỘÔỚỜỞỠỢƠÓÒÕỎỌỨỪỬỮỰƯÚÙỦŨỤÝỲỶỸỴA-Z]{1}[ắằẳẵặăấầẩẫậâáàãảạđếềểễệêéèẻẽẹíìỉĩịốồổỗộôớờởỡợơóòõỏọứừửữựưúùủũụýỳỷỹỵa-z]*\\s)+([ẮẰẲẴẶĂẤẦẨẪẬÂÁÀÃẢẠĐẾỀỂỄỆÊÉÈẺẼẸÍÌỈĨỊỐỒỔỖỘÔỚỜỞỠỢƠÓÒÕỎỌỨỪỬỮỰƯÚÙỦŨỤÝỲỶỸỴA-Z]{1}[ắằẳẵặăấầẩẫậâáàãảạđếềểễệêéèẻẽẹíìỉĩịốồổỗộôớờởỡợơóòõỏọứừửữựưúùủũụýỳỷỹỵa-z]*)$"))) {
+			if (maCheck.length() == 0) {
+				mess = "Hãy nhập tên khách hàng.";
+			} else {
+				mess = "Tên khách hàng có chữ hoa ở đầu mỗi từ, cách nhau bởi đấu cách. \nVD: Nguyễn Văn A";
+			}
+			getMess(txtHoTen, mess);
+			return false;
+		}
+		//
+		maCheck = txtSoDT.getText().trim();
+		if (!(maCheck.length() > 0 && maCheck.matches("^0[0-9]{9}$"))) {
+			if (maCheck.length() == 0) {
+				mess = "Hãy nhập số điện thoại của khách hàng.";
+			} else if (maCheck.length() != 10) {
+				mess = "Số điện thoại có 10 số và bắt đầu bằng số 0.";
+			}
+			getMess(txtSoDT, mess);
+			return false;
+		}
+
+		List<KhachHang> dsKhachHang = khachHangDAO.getDsKhachHang();
+		for (KhachHang kh : dsKhachHang) {
+			if (kh.getSoDT().equals(maCheck)) {
+				getMess(txtSoDT, "Số điện thoại của bạn đã có người dùng.");
+				return false;
+			}
+		}
+
+		//
+		if (!check_date()) {
+			return false;
+		}
+
+		int yy = Integer.parseInt(cbbNam.getSelectedItem().toString());
+		if (yy > 2006) {
+			JOptionPane.showMessageDialog(this,
+					"Những bạn trẻ rất yêu sách nhưng của hàng không bán cho những bạn dưới 15 tuổi.\n Sorry");
+			return false;
+		}
+		if (yy < 1920) {
+			JOptionPane.showMessageDialog(this, "Số tuổi đã vượt quá tuổi quy định trong của hàng( >100t ).\n Sorry");
+			return false;
+		}
+
+		//
+		maCheck = txtDiaChi.getText().trim();
+		if (maCheck.length() == 0) {
+			JOptionPane.showMessageDialog(this, "Hãy nhập địa chỉ.");
+			txtDiaChi.selectAll();
+			txtDiaChi.requestFocus();
+			return false;
+		}
+		//
+		maCheck = txtEmail.getText().trim();
+		if (!(maCheck.matches("^[A-Za-z0-9._]+@[A-Za-z0-9.]+\\.[a-z]{2,4}$"))) {
+			if (maCheck.length() == 0) {
+				mess = "Hãy nhập Email của khách hàng";
+			} else {
+				mess = "Email phải đúng theo định dạng (VD: Abc@gmail.com)";
+
+			}
+			getMess(txtEmail, mess);
+			return false;
+		}
+		//
+		return true;
+	}
+
+//
+	private void getMess(JTextField txt, String mess) {
+		JOptionPane.showMessageDialog(this, mess);
+		txt.selectAll();
+		txt.requestFocus();
+	}
+
+	//
+	private boolean check_date() {
+
+		String dd = cbbNgay.getSelectedItem().toString();
+		String mm = cbbThang.getSelectedItem().toString();
+		String yy = cbbNam.getSelectedItem().toString();
+
+		if (dd.equals("")) {
+			JOptionPane.showMessageDialog(this, "Hãy chọn ngày sinh.");
+			return false;
+		}
+		if (mm.equals("")) {
+			JOptionPane.showMessageDialog(this, "Hãy chọn tháng sinh.");
+			return false;
+		}
+		if (yy.equals("")) {
+			JOptionPane.showMessageDialog(this, "Hãy chọn năm sinh.");
+			return false;
+		}
 		return true;
 	}
 

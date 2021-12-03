@@ -450,7 +450,34 @@ public class QLNXB extends JFrame implements ActionListener, MouseListener {
 	}
 	//
 	private boolean check_data() {
-		// TODO Auto-generated method stub
+		String maCheck = txtTen.getText().trim();
+		String mess = "";
+
+		if (!(maCheck.length() > 0 && maCheck.matches("^[A-Z]{1}.*"))) {
+			if (maCheck.length() == 0) {
+				mess = "Hãy nhập tên nhà xuất bản.";
+			} else {
+				mess = "Tên nhà xuất bản phải có chữ hoa bắt đầu ";
+			}
+			getMess(txtTen, mess);
+			return false;
+		}
+		//
+		maCheck = txtDiachi.getText().trim();
+		if (maCheck.length() == 0) {
+			JOptionPane.showMessageDialog(this, "Hãy nhập địa chỉ.");
+			txtDiachi.selectAll();
+			txtDiachi.requestFocus();
+			return false;
+		}
+		
 		return true;
+	}
+
+//
+	private void getMess(JTextField txt, String mess) {
+		JOptionPane.showMessageDialog(this, mess);
+		txt.selectAll();
+		txt.requestFocus();
 	}
 }
