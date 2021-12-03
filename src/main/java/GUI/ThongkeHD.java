@@ -6,6 +6,8 @@ package GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,6 +20,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.toedter.calendar.JDateChooser;
+
+import GUI.Dialog.DialogCT_HoaDon;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -34,7 +38,7 @@ import entity.Sach;
  *
  * @author LENOVO
  */
-public class ThongkeHD extends JFrame implements ActionListener {
+public class ThongkeHD extends JFrame implements ActionListener ,MouseListener {
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private com.toedter.calendar.JDateChooser dateStart;
@@ -308,8 +312,10 @@ public class ThongkeHD extends JFrame implements ActionListener {
 		btnTheoNV.addActionListener(this);
 		btnTheoThang.addActionListener(this);
 		btnTheoGia.addActionListener(this);
-
+		
+		table.addMouseListener(this);
 //        
+		table.setDefaultEditor(Object.class, null);
 		modelTable = (DefaultTableModel) table.getModel();
 		addTable(dsHoaDon);
 //        
@@ -662,6 +668,38 @@ public class ThongkeHD extends JFrame implements ActionListener {
 		txtTong.setText(new DecimalFormat("###,###,###.0").format(s));
 
 	}
+
+@Override
+public void mouseClicked(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mouseEntered(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mouseExited(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mousePressed(MouseEvent arg0) {
+	if (arg0.getClickCount() == 2) {
+		int row = table.getSelectedRow();
+		new DialogCT_HoaDon(modelTable.getValueAt(row, 0).toString()).setVisible(true);
+	}
+}
+
+@Override
+public void mouseReleased(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+	
+}
 
 	// End of variables declaration//GEN-END:variables
 }

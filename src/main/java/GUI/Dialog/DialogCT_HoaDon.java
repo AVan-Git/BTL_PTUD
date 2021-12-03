@@ -48,7 +48,7 @@ public class DialogCT_HoaDon extends JFrame {
 	private SimpleDateFormat dformat = new SimpleDateFormat("dd-MM-yyyy");
 	private DecimalFormat dfMonkey = new DecimalFormat("###,###,###.0");
 	
-	private static String maHD = "HD00001";
+	private static String maHD = "HD00005";
 	/**
 	 * Launch the application.
 	 */
@@ -207,9 +207,7 @@ public class DialogCT_HoaDon extends JFrame {
 		table.setForeground(Color.BLACK);
 		table.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null},
-			},
+			new Object[][] {			},
 			new String[] {
 				"STT", "M\u00E3 S\u00E1ch", "T\u00EAn s\u00E1ch", "S\u1ED1 l\u01B0\u1EE3ng", "Gi\u00E1 th\u00E0nh", "T\u1ED5ng ti\u1EC1n"
 			}
