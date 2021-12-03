@@ -96,7 +96,7 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 	private DefaultTableModel modelSach;
 	private javax.swing.JTextField txtMaSach;
 	private javax.swing.JTextField txtTenSach;
-	private String tk= QL.taiKhoan;
+	private String tk = QL.taiKhoan;
 
 	private SpinnerNumberModel spinnerModel;
 	private int soLuong = 0;
@@ -110,6 +110,7 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 	NhanvienDAO nhanvienDAO = new NhanvienImpl();
 
 	private DecimalFormat dformat = new DecimalFormat("###,###,###.00 VND");
+
 	/**
 	 * Creates new form LapHD
 	 */
@@ -206,9 +207,10 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 		jLabel6.setForeground(new java.awt.Color(255, 51, 0));
 		jLabel6.setText("Thể loại");
 
-		cbbTheloai.setModel(
-				new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Văn học trong nước", "Văn học nước ngoài",
-						"Sách Kinh tế", "Sách giáo khoa", "Sách tâm lý", "Chăm sóc sức khỏe", "Tài liệu nước ngoài" }));
+		cbbTheloai.setModel(new javax.swing.DefaultComboBoxModel<>(
+				new String[] { "", "Sách Chính trị – pháp luật", "Sách Khoa học công nghệ", "Sách Kinh tế",
+						"Sách Văn học nghệ thuật", "Sách Văn hóa xã hội – Lịch sử", "Sách Giáo trình",
+						"Sách Truyện, tiểu thuyết", "Sách Tâm lý", "Sách tôn giáo", "Sách Sách thiếu nhi" }));
 
 		jLabel7.setBackground(new java.awt.Color(255, 255, 255));
 		jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -667,7 +669,7 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 		}
 		NhanVien nv = nhanvienDAO.getNhanVien_TaiKhoan(tk);
 //		NV00001 
-		String tennv = nv.getMaNV().substring(2, 7) + " "+ nv.getTenNV();
+		String tennv = nv.getMaNV().substring(2, 7) + " " + nv.getTenNV();
 		txtTenNV.setText(tennv);
 		txtTenNV.setEditable(false);
 //13
@@ -707,7 +709,7 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 
 	private void XActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_XActionPerformed
 		// TODO add your handling code here:
-        new QL(tk).setVisible(true);
+		new QL(tk).setVisible(true);
 		this.setVisible(false);
 	}// GEN-LAST:event_XActionPerformed
 
@@ -856,11 +858,11 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 		if (kh == null) {
 			return;
 		}
-		
+
 		if (!setThanhToan()) {
 			return;
 		}
-		
+
 		String tenNV = txtTenNV.getText().trim();
 		String maNV = "NV" + tenNV.substring(0, 5);
 
@@ -875,7 +877,7 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 
 		for (CT_HoaDon a : dsCt_HoaDon) {
 			ct_HoaDonDAO.themCT_HoaDon(a);
-			
+
 			Sach sach = sachDAO.getSach_id(a.getSach().getMaSach());
 			int x = sach.getSoLuong() - a.getSoluong();
 			sach.setSoLuong(x);
@@ -885,7 +887,7 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 		xoaRongJtext_Sach();
 		txtTenKH.setText("");
 		txtSoDT.setText("");
-		
+
 		dsCt_HoaDon = new ArrayList<>();
 		addTable_HoaDon(dsCt_HoaDon);
 
@@ -896,7 +898,7 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 	private boolean setThanhToan() {
 		double tongTien = Double.parseDouble(txtTongTien.getText().trim());
 		String tien = JOptionPane.showInputDialog("Hãy nhập số tiền khách hàng gửi.");
-		if(tien == null) {
+		if (tien == null) {
 			JOptionPane.showMessageDialog(this, "Thanh toán hóa đơn không thành công.");
 			return false;
 		}
@@ -907,14 +909,14 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 			JOptionPane.showMessageDialog(this, "Hãy nhập bằng ký tự số");
 			return false;
 		}
-		
+
 		if (x < tongTien) {
 			JOptionPane.showMessageDialog(this, "Thanh toán hóa đơn không thành công. \nSố tiền chưa đủ.");
 			return false;
 		}
-		JOptionPane.showMessageDialog(this, "Số tiền dư là: "+dformat.format(x-tongTien));
+		JOptionPane.showMessageDialog(this, "Số tiền dư là: " + dformat.format(x - tongTien));
 		return true;
-		
+
 	}
 
 	private Date getNgayLap() {

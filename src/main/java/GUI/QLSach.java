@@ -160,11 +160,8 @@ public class QLSach extends JFrame implements ActionListener, MouseListener {
 		});
 
 		cbbTheLoai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Sách Chính trị – pháp luật",
-				"Sách Khoa học công nghệ", "Sách Kinh tế", "Sách Văn học nghệ thuật",
-
-				"Sách Văn hóa xã hội – Lịch sử", "Sách Giáo trình", "Sách Truyện, tiểu thuyết", "Sách Tâm lý",
-				"Sách tâm linh", "Sách tôn giáo", "Sách Sách thiếu nhi"
-
+				"Sách Khoa học công nghệ", "Sách Kinh tế", "Sách Văn học nghệ thuật", "Sách Văn hóa xã hội – Lịch sử",
+				"Sách Giáo trình", "Sách Truyện, tiểu thuyết", "Sách Tâm lý", "Sách tôn giáo", "Sách Sách thiếu nhi"
 		}));
 
 		cbbTacGia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
@@ -641,6 +638,6 @@ public class QLSach extends JFrame implements ActionListener, MouseListener {
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
