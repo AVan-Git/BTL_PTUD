@@ -1031,6 +1031,7 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 						c.setSoluong(soLuong);
 
 						spinnerModel.setValue(0);
+						addTable_HoaDon(dsCt_HoaDon);
 					}
 				}
 

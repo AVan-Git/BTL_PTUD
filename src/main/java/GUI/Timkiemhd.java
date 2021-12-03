@@ -8,25 +8,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import GUI.Dialog.DialogCT_HoaDon;
-import GUI.Dialog.FormTieuSu;
 import dao.HoaDonDAO;
 import dao.impl.HoaDonImpl;
 import entity.HoaDon;
+import entity.Sach;
 
 /**
  *
  * @author LENOVO
  */
-public class Timkiemhd extends JFrame implements ActionListener ,MouseListener {
+public class Timkiemhd extends JFrame implements ActionListener, MouseListener {
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private javax.swing.JButton X;
@@ -39,20 +42,23 @@ public class Timkiemhd extends JFrame implements ActionListener ,MouseListener {
 	private javax.swing.JLabel jLabel4;
 	private javax.swing.JLabel jLabel5;
 	private javax.swing.JPanel jPanel1;
+	private javax.swing.JCheckBox chbTimNgay;
 	private javax.swing.JScrollPane jScrollPane1;
 	private javax.swing.JTable table;
 	private javax.swing.JTextField txtMaHD;
 	private javax.swing.JTextField txtKhachHang;
 	private javax.swing.JTextField txtNhanVien;
 	private DefaultTableModel modelTable;
+	private int ma1 = 0;
 
 	private HoaDonDAO hoaDonDAO = new HoaDonImpl();
 
 	private List<HoaDon> dsHoaDon = hoaDonDAO.getDsHoaDon();
 	private String tk = QL.taiKhoan;
 
+	private SimpleDateFormat dformat = new SimpleDateFormat("dd-MM-yyyy");
 	/**
-	 * Creates new form TimKiemHD
+	 * Creates new form Timkiemhd1
 	 */
 
 	public Timkiemhd() {
@@ -84,6 +90,7 @@ public class Timkiemhd extends JFrame implements ActionListener ,MouseListener {
 		dateNgay = new com.toedter.calendar.JDateChooser();
 		btnRefresh = new javax.swing.JButton();
 		btnTimKiem = new javax.swing.JButton();
+		chbTimNgay = new javax.swing.JCheckBox();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		setUndecorated(true);
@@ -99,10 +106,11 @@ public class Timkiemhd extends JFrame implements ActionListener ,MouseListener {
 
 		jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 		jLabel1.setText("Tìm Kiếm Thông Tin Hóa Đơn");
+		chbTimNgay.setText("Tìm kiếm theo ngày");
 
 		table.setModel(new javax.swing.table.DefaultTableModel(new Object[][] {
 
-		}, new String[] { "Mã hóa đơn", "Nhân viên", "Khách hàng", "Ngày lập ", "Tổng tiền" }));
+		}, new String[] { "Mã hóa đơn", "Tên nhân viên", "Tên khách hàng", "Ngày lập ", "Tổng tiền" }));
 		jScrollPane1.setViewportView(table);
 
 		jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -143,7 +151,11 @@ public class Timkiemhd extends JFrame implements ActionListener ,MouseListener {
 								.addComponent(btnRefresh, javax.swing.GroupLayout.Alignment.TRAILING,
 										javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE,
 										Short.MAX_VALUE)
-								.addComponent(btnTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
+								.addComponent(btnTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+
+								.addComponent(chbTimNgay))
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30,
+										Short.MAX_VALUE)
 								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30,
 										Short.MAX_VALUE)
 								.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 972,
@@ -156,11 +168,9 @@ public class Timkiemhd extends JFrame implements ActionListener ,MouseListener {
 						.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 								.addComponent(X).addGroup(
 										jPanel1Layout.createSequentialGroup().addContainerGap().addComponent(jLabel1)))
-						.addGap(29, 29, 29)
 						.addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 588,
-										javax.swing.GroupLayout.PREFERRED_SIZE)
-								.addGroup(jPanel1Layout.createSequentialGroup().addGap(76, 76, 76).addComponent(jLabel2)
+								.addGroup(jPanel1Layout.createSequentialGroup().addGap(105, 105, 105)
+										.addComponent(jLabel2)
 										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 										.addComponent(txtMaHD, javax.swing.GroupLayout.PREFERRED_SIZE, 29,
 												javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,19 +182,21 @@ public class Timkiemhd extends JFrame implements ActionListener ,MouseListener {
 										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 										.addComponent(txtKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 29,
 												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addGap(36, 36, 36)
+										.addGap(36, 36, 36).addComponent(jLabel5)
+										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 										.addComponent(dateNgay, javax.swing.GroupLayout.PREFERRED_SIZE, 29,
 												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addGap(38, 38, 38).addComponent(jLabel5)
-										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-
-										.addGap(37, 37, 37)
+										.addGap(26, 26, 26).addComponent(chbTimNgay)
+										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94,
+												Short.MAX_VALUE)
 										.addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 41,
 												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addGap(35, 35, 35).addComponent(btnTimKiem,
-												javax.swing.GroupLayout.PREFERRED_SIZE, 40,
-												javax.swing.GroupLayout.PREFERRED_SIZE)))
-						.addContainerGap(69, Short.MAX_VALUE)));
+										.addGap(35, 35, 35)
+										.addComponent(btnTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 40,
+												javax.swing.GroupLayout.PREFERRED_SIZE))
+								.addGroup(jPanel1Layout.createSequentialGroup().addGap(29, 29, 29)
+										.addComponent(jScrollPane1)))
+						.addContainerGap()));
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
@@ -198,23 +210,28 @@ public class Timkiemhd extends JFrame implements ActionListener ,MouseListener {
 						.addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE,
 								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
 						.addGap(0, 15, Short.MAX_VALUE)));
-//        
+
 		pack();
 		dateNgay.setDateFormatString("dd-MM-yyyy");
 		dateNgay.setDate(getHienTai());
 		dateNgay.setMaxSelectableDate(getHienTai());
 		setLocationRelativeTo(null);
-//        
+//      
 		txtKhachHang.addActionListener(this);
 		txtMaHD.addActionListener(this);
 		txtNhanVien.addActionListener(this);
 		btnRefresh.addActionListener(this);
 		btnTimKiem.addActionListener(this);
 		table.addMouseListener(this);
-//        
+
+		chbTimNgay.addActionListener(this);
+//      
 		table.setDefaultEditor(Object.class, null);
 		modelTable = (DefaultTableModel) table.getModel();
 		addTable(dsHoaDon);
+//		
+		txtNhanVien.setToolTipText("hãy nhập tên hoặc số điện thoại nhân viên để tìm.");
+		txtKhachHang.setToolTipText("hãy nhập tên hoặc số điện thoại khách hàng để tìm.");
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void XActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_XActionPerformed
@@ -222,6 +239,10 @@ public class Timkiemhd extends JFrame implements ActionListener ,MouseListener {
 		new QL(tk).setVisible(true);
 		this.setVisible(false);
 	}// GEN-LAST:event_XActionPerformed
+
+	private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRefreshActionPerformed
+		// TODO add your handling code here:
+	}// GEN-LAST:event_btnRefreshActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -243,13 +264,17 @@ public class Timkiemhd extends JFrame implements ActionListener ,MouseListener {
 				}
 			}
 		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(Timkiemhd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(Timkiemhd.class.getName()).log(java.util.logging.Level.SEVERE, null,
+					ex);
 		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(Timkiemhd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(Timkiemhd.class.getName()).log(java.util.logging.Level.SEVERE, null,
+					ex);
 		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(Timkiemhd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(Timkiemhd.class.getName()).log(java.util.logging.Level.SEVERE, null,
+					ex);
 		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(Timkiemhd.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(Timkiemhd.class.getName()).log(java.util.logging.Level.SEVERE, null,
+					ex);
 		}
 		// </editor-fold>
 
@@ -280,30 +305,30 @@ public class Timkiemhd extends JFrame implements ActionListener ,MouseListener {
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent e) {
+	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void mouseExited(MouseEvent e) {
+	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
-		if (e.getClickCount() == 2) {
+	public void mousePressed(MouseEvent arg0) {
+		if (arg0.getClickCount() == 2) {
 			int row = table.getSelectedRow();
 			new DialogCT_HoaDon(modelTable.getValueAt(row, 0).toString()).setVisible(true);
 		}
-		
+
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -312,7 +337,7 @@ public class Timkiemhd extends JFrame implements ActionListener ,MouseListener {
 		if (o.equals(btnRefresh)) {
 			System.out.println("btnRefresh");
 			XoaRongJtext();
-		}else if (o.equals(btnTimKiem)) {
+		} else if (o.equals(btnTimKiem) || o.equals(txtKhachHang) || o.equals(txtMaHD) || o.equals(txtNhanVien)) {
 			System.out.println("btnTimKiem");
 			getTimKiemHD();
 		}
@@ -320,16 +345,135 @@ public class Timkiemhd extends JFrame implements ActionListener ,MouseListener {
 	}
 
 	private void getTimKiemHD() {
-		String maHD = txtMaHD.getText().trim();
+		List<Sach> dsSach = new ArrayList<>();
+		String mess = "";
+
+		String ma = txtMaHD.getText().trim();
 		String nv = txtNhanVien.getText().trim();
 		String kh = txtKhachHang.getText().trim();
 		Date ngayTim = dateNgay.getCalendar().getTime();
-		if (maHD.equals("")||nv.equals("") || kh.equals("")) {
+		if (ma.equals("") && nv.equals("") && kh.equals("") && !chbTimNgay.isSelected()) {
 			JOptionPane.showMessageDialog(this, "Hãy nhập thông tin bạn muốn tìm.");
+			XoaRongJtext();
+			return;
 		}
-		
+//		
+		if (ma.length() > 0) {
+			HoaDon hd = hoaDonDAO.getHoaDon_Id(ma);
+			if (hd == null) {
+				JOptionPane.showMessageDialog(this,
+						"Mã " + ma + " không có trong danh sách.\nBạn hãy thử tìm kiếm theo nhưng thông tin khác.");
+				txtMaHD.selectAll();
+				txtMaHD.requestFocus();
+			} else {
+				DefaultTableModel dm = (DefaultTableModel) table.getModel();
+				dm.getDataVector().removeAllElements();
+
+				modelTable.addRow(new Object[] { hd.getMaHD(), hd.getNhanVien().getTenNV(),
+						hd.getKhachHang().getTenKH(), hd.getNgaylap(), hd.getTongTien() });
+			}
+			return;
+		}
+		List<HoaDon> list = new ArrayList<HoaDon>();
+		String regexTen = "^([ẮẰẲẴẶĂẤẦẨẪẬÂÁÀÃẢẠĐẾỀỂỄỆÊÉÈẺẼẸÍÌỈĨỊỐỒỔỖỘÔỚỜỞỠỢƠÓÒÕỎỌỨỪỬỮỰƯÚÙỦŨỤÝỲỶỸỴA-Z]{1}[ắằẳẵặăấầẩẫậâáàãảạđếềểễệêéèẻẽẹíìỉĩịốồổỗộôớờởỡợơóòõỏọứừửữựưúùủũụýỳỷỹỵa-z]*\\s)+([ẮẰẲẴẶĂẤẦẨẪẬÂÁÀÃẢẠĐẾỀỂỄỆÊÉÈẺẼẸÍÌỈĨỊỐỒỔỖỘÔỚỜỞỠỢƠÓÒÕỎỌỨỪỬỮỰƯÚÙỦŨỤÝỲỶỸỴA-Z]{1}[ắằẳẵặăấầẩẫậâáàãảạđếềểễệêéèẻẽẹíìỉĩịốồổỗộôớờởỡợơóòõỏọứừửữựưúùủũụýỳỷỹỵa-z]*)$";
+//		===================================================
+		if (nv.length() > 0) {
+			if (nv.matches("^0[0-9]{9}$")) {
+				for (HoaDon hd : dsHoaDon) {
+					if (hd.getNhanVien().getSoDT().equals(nv)) {
+						list.add(hd);
+					}
+				}
+			} else if (nv.matches(regexTen)) {
+				for (HoaDon hd : dsHoaDon) {
+					if (hd.getNhanVien().getTenNV().equals(nv)) {
+						list.add(hd);
+					}
+				}
+			} else {
+				if (ma1 != 1) {
+					mess = "Tên nhân viên có chữ hoa ở đầu mỗi từ, cách nhau bởi đấu cách. \nVD: Nguyễn Văn A";
+					ma1 = 1;
+				} else {
+					mess = "Số điện thoại có 10 số và bắt đầu bằng số 0.";
+					ma1 = 0;
+				}
+				getMess(txtNhanVien, mess);
+				return;
+			}
+			if (list.size() == 0) {
+				getMess(txtNhanVien, "Không tìm thấy hóa đơn nào phù hợp với: '" + nv + "'");
+				return;
+			}
+		}
+//		===================================================
+		if (kh.length() > 0) {
+			if (list.size() > 0) {
+				dsHoaDon = list;
+				list = new ArrayList<>();
+			}
+			if (kh.matches("^0[0-9]{9}$")) {
+				for (HoaDon hd : dsHoaDon) {
+					if (hd.getKhachHang().getSoDT().equals(kh)) {
+						list.add(hd);
+					}
+				}
+			} else if (kh.matches(regexTen)) {
+				for (HoaDon hd : dsHoaDon) {
+					if (hd.getKhachHang().getTenKH().equals(kh)) {
+						list.add(hd);
+					}
+				}
+			} else {
+				if (ma1 != 1) {
+					mess = "Tên khách hàng có chữ hoa ở đầu mỗi từ, cách nhau bởi đấu cách. \nVD: Nguyễn Văn A";
+					ma1 = 1;
+				} else {
+					mess = "Số điện thoại có 10 số và bắt đầu bằng số 0.";
+					ma1 = 0;
+				}
+				getMess(txtKhachHang, mess);
+				return;
+			}
+
+			if (list.size() == 0) {
+				getMess(txtKhachHang, "Không tìm thấy hóa đơn nào phù hợp với: '" + kh + "'");
+				return;
+			}
+		}
+//		
+
+		if (chbTimNgay.isSelected()) {
+			if (list.size() > 0) {
+				dsHoaDon = list;
+				list = new ArrayList<>();
+			}
+			
+			for (HoaDon hd : dsHoaDon) {
+				if (hd.getNgaylap().compareTo(ngayTim) == 0) {
+					list.add(hd);
+				}				
+			}
+			if (list.size() == 0) {
+				getMess(txtKhachHang, "Không tìm thấy hóa đơn nào phù hợp với ngày: '" + dformat.format(ngayTim) + "'");
+				return;
+			}
+			
+		}
+
+		addTable(list);
 	}
 
+//	
+	public void getMess(JTextField txt, String mess) {
+		JOptionPane.showMessageDialog(this, mess);
+		txt.selectAll();
+		txt.requestFocus();
+		dsHoaDon = hoaDonDAO.getDsHoaDon();
+		addTable(dsHoaDon);
+	}
+
+//
 	private void XoaRongJtext() {
 		txtKhachHang.setText("");
 		txtMaHD.setText("");
@@ -348,11 +492,8 @@ public class Timkiemhd extends JFrame implements ActionListener ,MouseListener {
 		dm.getDataVector().removeAllElements();
 
 		for (HoaDon hd : dsHoaDon2) {
-			String nv = hd.getNhanVien().getMaNV().substring(2, 7) + hd.getNhanVien().getTenNV();
-			String kh = hd.getKhachHang().getMaKH().substring(2, 7) + hd.getKhachHang().getTenKH();
-			modelTable.addRow(new Object[] { hd.getMaHD(), nv, kh, hd.getNgaylap(), hd.getTongTien() });
+			modelTable.addRow(new Object[] { hd.getMaHD(), hd.getNhanVien().getTenNV(), hd.getKhachHang().getTenKH(),
+					hd.getNgaylap(), hd.getTongTien() });
 		}
 	}
-
-//	
 }

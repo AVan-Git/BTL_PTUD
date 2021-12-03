@@ -36,8 +36,7 @@ public class XoaTK extends JFrame implements ActionListener {
 	private javax.swing.JTable table;
 	private DefaultTableModel modelTable;
 
-//    private String tk = QL.taiKhoan;    	    
-	private String tk = "Admin";
+    private String tk = QL.taiKhoan;    	    
 
 	private NhanvienDAO nhanvienDAO = new NhanvienImpl();
 	private TaiKhoanDAO taiKhoanDAO = new TaiKhoanImpl();
