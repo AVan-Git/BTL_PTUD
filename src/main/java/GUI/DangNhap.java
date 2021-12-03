@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
 import dao.TaiKhoanDAO;
 import dao.impl.TaiKhoanImpl;
 import entity.TaiKhoan;
-import net.bytebuddy.build.ToStringPlugin;
 
 /**
  *
@@ -22,7 +21,7 @@ import net.bytebuddy.build.ToStringPlugin;
 public class DangNhap extends JFrame implements ActionListener {
 
 	/**
-	 * Creates new form DangNhap
+	 * Creates new form DangNhap2
 	 */
 	public DangNhap() {
 		initComponents();
@@ -45,6 +44,7 @@ public class DangNhap extends JFrame implements ActionListener {
 		txtPass = new javax.swing.JPasswordField();
 		jLabel2 = new javax.swing.JLabel();
 		txtUser = new javax.swing.JTextField();
+		jlblTB = new javax.swing.JButton();
 		btnThoat = new javax.swing.JButton();
 		jLabel1 = new javax.swing.JLabel();
 
@@ -56,21 +56,21 @@ public class DangNhap extends JFrame implements ActionListener {
 		jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 		jLabel3.setText("Tên đăng nhập");
 		jPanel2.add(jLabel3);
-		jLabel3.setBounds(210, 90, 135, 22);
+		jLabel3.setBounds(210, 70, 135, 22);
 
 		jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 		jLabel5.setText("Mật Khẩu");
 		jPanel2.add(jLabel5);
-		jLabel5.setBounds(210, 190, 100, 20);
+		jLabel5.setBounds(210, 160, 100, 20);
 
 		btnDangNhap.setBackground(new java.awt.Color(255, 204, 0));
 		btnDangNhap.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 		btnDangNhap.setText("Đăng Nhập");
 		jPanel2.add(btnDangNhap);
-		btnDangNhap.setBounds(210, 310, 140, 40);
+		btnDangNhap.setBounds(210, 300, 140, 40);
 
 		jPanel2.add(txtPass);
-		txtPass.setBounds(210, 220, 350, 30);
+		txtPass.setBounds(210, 190, 350, 30);
 
 		jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 		jLabel2.setText("Đăng Nhập");
@@ -78,50 +78,42 @@ public class DangNhap extends JFrame implements ActionListener {
 		jLabel2.setBounds(330, 0, 140, 40);
 
 		jPanel2.add(txtUser);
-		txtUser.setBounds(210, 120, 350, 30);
+		txtUser.setBounds(210, 100, 350, 30);
+
+		jlblTB.setBackground(new java.awt.Color(255, 255, 255));
+		jlblTB.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+		jlblTB.setText("Khách hàng có thể đăng nhập trực tiếp không cần Tên đăng nhập và mật khẩu");
+		jPanel2.add(jlblTB);
+		jlblTB.setBounds(120, 370, 590, 25);
 
 		btnThoat.setBackground(new java.awt.Color(255, 204, 0));
 		btnThoat.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 		btnThoat.setText("Thoát");
 
 		jPanel2.add(btnThoat);
-		btnThoat.setBounds(410, 310, 150, 40);
+		btnThoat.setBounds(410, 300, 150, 40);
 
 		jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/nenSach.jpg"))); // NOI18N
-		jLabel1.addAncestorListener(new javax.swing.event.AncestorListener() {
-			public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-				jLabel1AncestorAdded(evt);
-			}
 
-			public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-			}
-
-			public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-			}
-		});
 		jPanel2.add(jLabel1);
 		jLabel1.setBounds(-20, 0, 830, 420);
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
 		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE));
+				.addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE));
 		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE));
 
 		pack();
 		setLocationRelativeTo(null);
-//        
+//      
 		btnDangNhap.addActionListener(this);
 		btnThoat.addActionListener(this);
 		txtUser.addActionListener(this);
 		txtPass.addActionListener(this);
 
 	}// </editor-fold>//GEN-END:initComponents
-
-	private void jLabel1AncestorAdded(javax.swing.event.AncestorEvent evt) {// GEN-FIRST:event_jLabel1AncestorAdded
-		// TODO add your handling code here:
-	}// GEN-LAST:event_jLabel1AncestorAdded
 
 	/**
 	 * @param args the command line arguments
@@ -171,14 +163,14 @@ public class DangNhap extends JFrame implements ActionListener {
 	private javax.swing.JPanel jPanel2;
 	private javax.swing.JPasswordField txtPass;
 	private javax.swing.JTextField txtUser;
-	
+	private javax.swing.JButton jlblTB;
+
 	TaiKhoanDAO taiKhoanDAO = new TaiKhoanImpl();
 
 	// End of variables declaration//GEN-END:variables
 	@Override
-	public void actionPerformed(ActionEvent e) {
-
-		Object o = e.getSource();
+	public void actionPerformed(ActionEvent arg0) {
+		Object o = arg0.getSource();
 
 		if (o.equals(btnThoat)) {
 			if (JOptionPane.showConfirmDialog(this, "Bạn có muốn thoát chương trình không?", "Cảnh báo.",
@@ -199,31 +191,24 @@ public class DangNhap extends JFrame implements ActionListener {
 
 			} else if (check_data()) {
 				System.out.println("TRUE");
-				
+
 				TaiKhoan a = taiKhoanDAO.getTaiKhoan_Id(user);
 				if (a != null) {
 					if (a.getMatKhau().equals(pass)) {
 						new QL(user).setVisible(true);
 						this.setVisible(false);
-					}
-					else {
+					} else {
 						JOptionPane.showMessageDialog(this, "Sai mật khẩu!");
 						txtPass.selectAll();
 						txtPass.requestFocus();
 					}
-				}
-				else {
+				} else {
 					JOptionPane.showMessageDialog(this, "Tài khoản của bạn chưa được đăng ký.!");
 					txtUser.selectAll();
 					txtUser.requestFocus();
 				}
-				
-				
-			}
-			else System.out.println("Sai: " + user + "_" + pass);
-
-			
-			
+			} else
+				System.out.println("Sai: " + user + "_" + pass);
 		}
 	}
 
@@ -231,7 +216,7 @@ public class DangNhap extends JFrame implements ActionListener {
 
 		String user = txtUser.getText().trim();
 		String pass = txtPass.getText().trim();
-		
+
 		if (!(user.length() > 0 && user.matches("^[a-zA-z0-9_]{4,}$"))) {
 
 			if (user.length() == 0) {
@@ -245,8 +230,7 @@ public class DangNhap extends JFrame implements ActionListener {
 			return false;
 		}
 		//
-		if (!(pass.length() > 0
-				&& pass.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+-=]).{6,20}$"))) {
+		if (!(pass.length() > 0 && pass.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+-=]).{6,20}$"))) {
 			if (pass.length() == 0) {
 				JOptionPane.showMessageDialog(this, "Hãy nhập mật khẩu. \nPlease");
 			}

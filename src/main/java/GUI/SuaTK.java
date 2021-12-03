@@ -38,8 +38,7 @@ public class SuaTK extends JFrame implements ActionListener {
 	private javax.swing.JPasswordField txtPass2;
 	private javax.swing.JTextField txtUser;
 
-//    private String tk = QL.taiKhoan;
-	private String tk = "Luat15";
+    private String tk = QL.taiKhoan;
 
 	private NhanvienDAO nhanvienDAO = new NhanvienImpl();
 	private TaiKhoanDAO taiKhoanDAO = new TaiKhoanImpl();
