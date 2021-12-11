@@ -6,6 +6,7 @@ package GUI;
 
 import java.awt.event.ActionEvent;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import dao.NhanvienDAO;
@@ -19,7 +20,7 @@ import entity.NhanVien;
 public class QL extends javax.swing.JFrame {
 
 	private NhanvienDAO nhanvienDAO = new NhanvienImpl();
-	public static String taiKhoan = "Admin";
+	public static String taiKhoan = "taikhoannv3";
 
 	private int chucvu;
 
@@ -42,6 +43,7 @@ public class QL extends javax.swing.JFrame {
 	// Code">//GEN-BEGIN:initComponents
 	private void initComponents(String tk) {
 
+		
 		jPanel1 = new javax.swing.JPanel();
 		jLabel1 = new javax.swing.JLabel();
 		lblThongTinNV = new javax.swing.JLabel();

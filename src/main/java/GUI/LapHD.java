@@ -1046,18 +1046,19 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 		DefaultTableModel dm = (DefaultTableModel) tableDonDat.getModel();
 		dm.getDataVector().removeAllElements();
 		double s = 0;
+		double tong= 0.0;
 
 		if (dsCt_HoaDon.size() > 0) {
 			for (CT_HoaDon a : dsCt_HoaDon) {
+				tong = a.getSoluong()*a.getGiaban();
+				
 				modelDonDat.addRow(new Object[] {
 //						ma,ten,soLuong, giaBan, tongTien
 						a.getSach().getMaSach(), a.getSach().getTenSach(), a.getSoluong(), a.getGiaban(),
-						a.getTongTien() });
-				s += a.getTongTien();
+						tong });
+				s += tong;
 			}
 		} else {
-//			tableDonDat.set
-//			modelDonDat = (DefaultTableModel) tableDonDat.getModel();
 			modelDonDat.addRow(new Object[] { "", "", "", "", "" });
 
 		}

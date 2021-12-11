@@ -75,6 +75,7 @@ public class Timkiemhd extends JFrame implements ActionListener, MouseListener {
 	// Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
 
+//		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		jPanel1 = new javax.swing.JPanel();
 		X = new javax.swing.JButton();
 		jLabel1 = new javax.swing.JLabel();

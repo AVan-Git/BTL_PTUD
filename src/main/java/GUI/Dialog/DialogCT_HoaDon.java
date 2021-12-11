@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -16,15 +18,22 @@ import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import constant.Value;
 import dao.CT_HoaDonDAO;
 import dao.HoaDonDAO;
 import dao.impl.CT_HoaDonImpl;
 import dao.impl.HoaDonImpl;
 import entity.CT_HoaDon;
 import entity.HoaDon;
+import net.sf.jasperreports.engine.JRException;
+import report.Report_PDF;
 
 import javax.swing.JScrollPane;
 import java.awt.Color;
+import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 public class DialogCT_HoaDon extends JFrame {
 
@@ -47,6 +56,7 @@ public class DialogCT_HoaDon extends JFrame {
 
 	private SimpleDateFormat dformat = new SimpleDateFormat("dd-MM-yyyy");
 	private DecimalFormat dfMonkey = new DecimalFormat("###,###,###.0");
+	private JButton btnXuatHD;
 	
 	private static String maHD = "HD00005";
 	/**
@@ -248,11 +258,39 @@ public class DialogCT_HoaDon extends JFrame {
 		lblNewLabel_4.setBounds(1172, 658, 45, 32);
 		panel.add(lblNewLabel_4);
 		
+		btnXuatHD = new JButton("Xuất hóa đơn");
+		btnXuatHD.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Report_PDF rp = new Report_PDF();
+				
+				
+				try {
+					rp.rp_ChiTietHoaDon(maHD);
+					
+					JOptionPane.showMessageDialog(null, "Xuất hóa đơn thành công. ( ở thư mục "+ Value.linkSave +" )");
+				} catch (JRException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			
+			}
+		});
+		btnXuatHD.setForeground(Color.BLACK);
+		btnXuatHD.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnXuatHD.setBounds(86, 658, 114, 34);
+		panel.add(btnXuatHD);
+		
 //		
 
 		table.setDefaultEditor(Object.class, null);
 		modelTable = (DefaultTableModel) table.getModel();
 		addData(maHD);
+		//
+//		btnXuatHD.addActionListener(this);
 	}
 
 	private void addData(String maHD) {

@@ -1,37 +1,34 @@
 package app;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
-
-import javax.swing.JOptionPane;
+import java.io.File;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import dao.HoaDonDAO;
-import dao.NhaXuatBanDAO;
 import dao.NhanvienDAO;
-import dao.TacGiaDAO;
 import dao.TaiKhoanDAO;
 import dao.impl.HoaDonImpl;
 import dao.impl.KhachHangImpl;
 import dao.impl.NhaXuatBanImpl;
-import dao.impl.NhanvienImpl;
 import dao.impl.SachImpl;
 import dao.impl.TacGiaImpl;
-import dao.impl.TaiKhoanImpl;
 import entity.HoaDon;
-import entity.KhachHang;
-import entity.NhaXuatBan;
-import entity.NhanVien;
-import entity.Sach;
-import entity.TacGia;
-import entity.TaiKhoan;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import report.Report_PDF;
 
 public class MyApp {
 
 	private static KhachHangImpl khachHangDAO;
-	private static SachImpl sachDAO ;
+	private static SachImpl sachDAO;
 	private static TacGiaImpl tacGiaDAO;
 	private static NhaXuatBanImpl nhaXuatBanDAO;
 	private static NhanvienDAO nhanvienDAO;
@@ -52,16 +49,69 @@ public class MyApp {
 //			System.out.println("TRUE");
 //		}
 //        else System.out.println("False");
-		
+
 		hoaDonDAO = new HoaDonImpl();
 		System.out.println("Complete!");
-		
-		HoaDon hd = hoaDonDAO.getHoaDon_Id("HD00002");
+
+		HoaDon hd = hoaDonDAO.getHoaDon_Id("HD00005");
 		System.out.println(hd);
+//
+//		try {
+//			System.out.println("Xoat hoa don");
+//			XuatHoaDon("HD00005");
+//		} catch (JRException e) {
+//			System.out.println("lỗi 1");
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (SQLException e) {
+//			System.out.println("lỗi 3");
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		Report_PDF rp = new Report_PDF();
+		try {
+			System.out.println("Xoat hoa don");
+			rp.rp_ChiTietHoaDon("HD00008");
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+//
+	public static void XuatHoaDon(String maHD) throws JRException, SQLException {
+		JasperReport jasperReport = JasperCompileManager
+				.compileReport("D:/khaiThacDL/test_java/baoCao/rpCT_HoaDon.jrxml");
+
+		// Tham số truyền vào báo cáo.
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("value_maHD", maHD);
+
+		// DataSource
+		// Đây là báo cáo đơn giản, không kết nối vào DB
+		// vì vậy không cần nguồn dữ liệu.
+//	JRDataSource dataSource = new JREmptyDataSource();
+
+		String url = "jdbc:sqlserver://localhost:1433;databasename=QLCuaHangSach";
+		String user = "sa";
+		String password = "sapassword";
+
+		Connection con = DriverManager.getConnection(url, user, password);
+
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, con);
+
+		// Đảm bảo thư mục đầu ra tồn tại.
+		File outDir = new File("D:/Bin");
+		outDir.mkdirs();
+
+		// Chạy báo cáo và export ra file PDF.
+		JasperExportManager.exportReportToPdfFile(jasperPrint, "D:/Bin/TextReport.pdf");
+
+		System.out.println("Done!");
 
 	}
-//	
-
-
-
 }
