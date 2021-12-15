@@ -50,36 +50,19 @@ public class MyApp {
 //		}
 //        else System.out.println("False");
 
-		hoaDonDAO = new HoaDonImpl();
+		sachDAO = new SachImpl();
 		System.out.println("Complete!");
 
-		HoaDon hd = hoaDonDAO.getHoaDon_Id("HD00005");
-		System.out.println(hd);
-//
-//		try {
-//			System.out.println("Xoat hoa don");
-//			XuatHoaDon("HD00005");
-//		} catch (JRException e) {
-//			System.out.println("lỗi 1");
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (SQLException e) {
-//			System.out.println("lỗi 3");
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		Map<String, Integer> map = sachDAO.getSoLuongSachDaBan();
+		System.out.println("");
 		
-		Report_PDF rp = new Report_PDF();
-		try {
-			System.out.println("Xoat hoa don");
-			rp.rp_ChiTietHoaDon("HD00008");
-		} catch (JRException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		map.entrySet().iterator().forEachRemaining((value) -> {
+			System.out.println(value.getKey());
+			System.out.println(value.getValue());
+		});
+
+		
+
 	}
 
 //

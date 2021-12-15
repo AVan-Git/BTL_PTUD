@@ -1,7 +1,10 @@
 package dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -16,11 +19,10 @@ import entity.NhaXuatBan;
 import entity.Sach;
 import entity.TacGia;
 
-public  class SachImpl implements SachDAO{
+public class SachImpl implements SachDAO {
 
 	private SessionFactory sessionFactory;
-	
-	
+
 	public SachImpl() {
 		super();
 		this.sessionFactory = DatabaseSQL.getInstance().getSessionFactory();
@@ -156,14 +158,14 @@ public  class SachImpl implements SachDAO{
 	public List<Sach> getDsSach_Ten(List<Sach> lists, String tenTim) {
 		if (lists.size() != 0) {
 			List<Sach> dsSach = new ArrayList<>();
-			
+
 			for (Sach a : lists) {
 				if (a.getTenSach().matches(".*" + tenTim + ".*")) {
 //					maCheck.matches("DH1[1-6][A-Z]")
 					dsSach.add(a);
 				}
 			}
-			
+
 			return dsSach;
 		} else {
 			Session session = sessionFactory.getCurrentSession(); // goi den csdl
@@ -174,7 +176,7 @@ public  class SachImpl implements SachDAO{
 			try {
 				tr.begin(); // bat dau
 
-				String query = "SELECT * FROM [dbo].[Sach]  where [tenSach] like N'%"+ tenTim +"%'";
+				String query = "SELECT * FROM [dbo].[Sach]  where [tenSach] like N'%" + tenTim + "%'";
 
 				dsSach = session.createNativeQuery(query, Sach.class).getResultList();
 
@@ -206,21 +208,21 @@ public  class SachImpl implements SachDAO{
 
 			for (Object obj : list) {
 				Object[] o = (Object[]) obj;
-				
+
 				String ma = (String) o[0];
 				String ten = (String) o[1];
-				
+
 				NhaXuatBan a = new NhaXuatBan(ma, ten);
 				dsNhaXB.add(a);
 			}
-			
+
 			tr.commit(); // ket thuc
 			return dsNhaXB;
 		} catch (Exception e) {
 			e.printStackTrace();
 			tr.rollback(); // quay lai khi co loi
 		}
-		
+
 		return null;
 	}
 
@@ -240,21 +242,21 @@ public  class SachImpl implements SachDAO{
 
 			for (Object obj : list) {
 				Object[] o = (Object[]) obj;
-				
+
 				String ma = (String) o[0];
 				String ten = (String) o[1];
-				
+
 				TacGia a = new TacGia(ma, ten);
 				dsTacGia.add(a);
 			}
-			
+
 			tr.commit(); // ket thuc
 			return dsTacGia;
 		} catch (Exception e) {
 			e.printStackTrace();
 			tr.rollback(); // quay lai khi co loi
 		}
-		
+
 		return null;
 	}
 //	
@@ -263,23 +265,22 @@ public  class SachImpl implements SachDAO{
 	public List<Sach> getDsSach_TheLoai(List<Sach> lists, String theLoaiTim) {
 		if (lists.size() != 0) {
 			List<Sach> dsSach = new ArrayList<>();
-			
+
 			for (Sach a : lists) {
 				if (a.getLoai().equalsIgnoreCase(theLoaiTim)) {
 //					maCheck.matches("DH1[1-6][A-Z]")
 					dsSach.add(a);
 				}
 			}
-			
+
 			return dsSach;
 		} else {
 //			SELECT * FROM [dbo].[Sach] where [loai] like N'Sách giáo khoa'
-			String query = "SELECT * FROM [dbo].[Sach] where [loai] like N'"+theLoaiTim+"'";
+			String query = "SELECT * FROM [dbo].[Sach] where [loai] like N'" + theLoaiTim + "'";
 
 			return TimKiem_SQL(query);
 		}
-		
-		
+
 	}
 
 	private List<Sach> TimKiem_SQL(String query) {
@@ -306,17 +307,17 @@ public  class SachImpl implements SachDAO{
 	public List<Sach> getDsSach_TacGia(List<Sach> lists, String tacGiaTim) {
 		if (lists.size() != 0) {
 			List<Sach> dsSach = new ArrayList<>();
-			
+
 			for (Sach a : lists) {
 				if (a.getTacGia().getMaTG().equalsIgnoreCase(tacGiaTim)) {
 					dsSach.add(a);
 				}
 			}
-			
+
 			return dsSach;
 		} else {
 //			SELECT * FROM [dbo].[Sach] where [maTG] like 'TG00001'
-			String query = "SELECT * FROM [dbo].[Sach] where [maTG] like '"+tacGiaTim+"'";
+			String query = "SELECT * FROM [dbo].[Sach] where [maTG] like '" + tacGiaTim + "'";
 
 			return TimKiem_SQL(query);
 		}
@@ -326,17 +327,17 @@ public  class SachImpl implements SachDAO{
 	public List<Sach> getDsSach_NhaXB(List<Sach> lists, String nhaXBTim) {
 		if (lists.size() != 0) {
 			List<Sach> dsSach = new ArrayList<>();
-			
+
 			for (Sach a : lists) {
 				if (a.getNhaXB().getMaNXB().equals(nhaXBTim)) {
 					dsSach.add(a);
 				}
 			}
-			
+
 			return dsSach;
 		} else {
 //			SELECT * FROM [dbo].[Sach] where [maNXB] like 'NXB00001'
-			String query = "SELECT * FROM [dbo].[Sach] where [maNXB] like '"+nhaXBTim+"'";
+			String query = "SELECT * FROM [dbo].[Sach] where [maNXB] like '" + nhaXBTim + "'";
 
 			return TimKiem_SQL(query);
 		}
@@ -345,26 +346,57 @@ public  class SachImpl implements SachDAO{
 	@Override
 	public List<String> getDsLoaiSach() {
 		Session session = sessionFactory.getCurrentSession();
-		
+
 		Transaction tr = session.getTransaction();
 		try {
 			tr.begin();
-			
-			String query ="SELECT DISTINCT  [loai]	FROM [QLCuaHangSach].[dbo].[Sach]";
+
+			String query = "SELECT DISTINCT  [loai]	FROM [QLCuaHangSach].[dbo].[Sach]";
 			@SuppressWarnings("unchecked")
-			List<String> dsLoai =(List<String>) session.createNativeQuery(query).getResultList();
-			
+			List<String> dsLoai = (List<String>) session.createNativeQuery(query).getResultList();
+
 			tr.commit();
 			return dsLoai;
 		} catch (Exception e) {
 			tr.rollback();
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
 
-	
-	
+	@Override
+	public Map<String, Integer> getSoLuongSachDaBan() {
+		Session session = sessionFactory.getCurrentSession();
+
+		Transaction tr = session.getTransaction();
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		try {
+			tr.begin();
+
+			String query = "SELECT [maSach], SUM([soluong]) FROM [dbo].[CT_HoaDon]\r\n"
+					+ "GROUP BY [maSach]";
+			
+			List<?> list = session.createNativeQuery(query).getResultList();
+			
+			for (Object o : list) {
+				Object obj[] = (Object[]) o;
+				
+				System.out.println(obj[0].toString());
+				System.out.println(obj[1].toString());
+				int value = (int) obj[1];
+				map.put(obj[0].toString(), value);
+			}
+
+			tr.commit();
+			
+		} catch (Exception e) {
+			tr.rollback();
+			e.printStackTrace();
+		}
+
+		return map;
+
+	}
 
 }
