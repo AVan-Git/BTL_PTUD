@@ -24,7 +24,7 @@ public class Report_PDF {
 	
 	public void rp_ChiTietHoaDon(String maHD) throws JRException, SQLException {
 		JasperReport jasperReport = JasperCompileManager
-				.compileReport("D:/khaiThacDL/test_java/baoCao/rpCT_HoaDon.jrxml");
+				.compileReport("./baoCao/rpCT_HoaDon.jrxml");
 
 		// Tham số truyền vào báo cáo.
 		Map<String, Object> parameters = new HashMap<String, Object>();
@@ -53,5 +53,34 @@ public class Report_PDF {
 		JasperExportManager.exportReportToPdfFile(jasperPrint, linkSave);
 
 		System.out.println("Done!");
+	}
+//	
+//	
+	public void rp_HoaDon_TheoNgay(String ngayHT) throws JRException, SQLException {
+			JasperReport jasperReport = JasperCompileManager
+					.compileReport("./baoCao/rp_HoaDonNgayHT.jrxml");
+
+			// Tham số truyền vào báo cáo.
+			Map<String, Object> parameters = new HashMap<String, Object>();
+			parameters.put("date1", ngayHT);
+
+			String url = "jdbc:sqlserver://localhost:1433;databasename=QLCuaHangSach";
+			String user = Value.user;
+			String password = Value.password;
+
+			Connection con = DriverManager.getConnection(url, user, password);
+
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, con);
+
+			// Đảm bảo thư mục đầu ra tồn tại.
+			File outDir = new File(Value.linkSave);
+			outDir.mkdirs();
+
+			String linkSave = Value.linkSave+"/Report_TheoNgay.pdf";
+			// Chạy báo cáo và export ra file PDF.
+			JasperExportManager.exportReportToPdfFile(jasperPrint, linkSave);
+
+			System.out.println("Done!");
+
 	}
 }

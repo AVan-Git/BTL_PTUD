@@ -50,16 +50,30 @@ public class MyApp {
 //		}
 //        else System.out.println("False");
 
-		sachDAO = new SachImpl();
-		System.out.println("Complete!");
-
-		Map<String, Integer> map = sachDAO.getSoLuongSachDaBan();
-		System.out.println("");
+//		sachDAO = new SachImpl();
+//		System.out.println("Complete!");
+//
+//		Map<String, Integer> map = sachDAO.getSoLuongSachDaBan();
+//		System.out.println("");
+//		
+//		map.entrySet().iterator().forEachRemaining((value) -> {
+//			System.out.println(value.getKey());
+//			System.out.println(value.getValue());
+//		});
 		
-		map.entrySet().iterator().forEachRemaining((value) -> {
-			System.out.println(value.getKey());
-			System.out.println(value.getValue());
-		});
+		Report_PDF report_PDF = new Report_PDF();
+		
+		try {
+//			report_PDF.rp_HoaDon_TheoNgay("2021-12-04%");
+			report_PDF.rp_ChiTietHoaDon("HD00016");
+			
+		} catch (JRException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		
 

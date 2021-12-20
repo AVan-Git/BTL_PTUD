@@ -22,6 +22,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.JTextComponent;
 
 import dao.CT_HoaDonDAO;
 import dao.HoaDonDAO;
@@ -770,7 +771,6 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 
 	}
 
