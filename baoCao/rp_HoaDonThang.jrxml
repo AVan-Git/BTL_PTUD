@@ -709,6 +709,20 @@ GROUP BY HoaDon.maHD, HoaDon.ngaylap, HoaDon.tongTien, KhachHang.tenKH, NhanVien
 				</textElement>
 				<textFieldExpression><![CDATA[$V{maHD2}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="338" y="220" width="81" height="28" uuid="9cc89e9d-3727-421c-bb78-f58268bb20af"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Ngày lập:]]></text>
+			</staticText>
+			<textField pattern="dd - MM - yyyy">
+				<reportElement x="419" y="220" width="125" height="28" uuid="f3d507c1-ff5d-4725-a295-544891691886"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12" isBold="false" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>
