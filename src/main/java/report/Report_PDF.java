@@ -138,5 +138,90 @@ public class Report_PDF {
 			System.out.println("Done!");
 
 	}
+//
+	public void rp_NVTheoDoanhThu_Nam(String namString) throws JRException, SQLException {
+			JasperReport jasperReport = JasperCompileManager
+					.compileReport("./baoCao/rp_DoanhThuTheoNV_Nam.jrxml");
+
+			// Tham số truyền vào báo cáo.
+			Map<String, Object> parameters = new HashMap<String, Object>();
+			parameters.put("date", namString);
+
+			String url = "jdbc:sqlserver://localhost:1433;databasename=QLCuaHangSach";
+			String user = Value.user;
+			String password = Value.password;
+
+			Connection con = DriverManager.getConnection(url, user, password);
+
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, con);
+
+			// Đảm bảo thư mục đầu ra tồn tại.
+			File outDir = new File(Value.linkSave);
+			outDir.mkdirs();
+
+			String linkSave = Value.linkSave+"/Report_dsNVTheoDoanhThu_Nam.pdf";
+			// Chạy báo cáo và export ra file PDF.
+			JasperExportManager.exportReportToPdfFile(jasperPrint, linkSave);
+
+			System.out.println("Done!");
+
+	}
+	//
+	public void rp_NVTheoDoanhThu_Thang(String namString) throws JRException, SQLException {
+			JasperReport jasperReport = JasperCompileManager
+					.compileReport("./baoCao/rp_DoanhThuTheoNV_Thang.jrxml");
+
+			// Tham số truyền vào báo cáo.
+			Map<String, Object> parameters = new HashMap<String, Object>();
+			parameters.put("date", namString);
+
+			String url = "jdbc:sqlserver://localhost:1433;databasename=QLCuaHangSach";
+			String user = Value.user;
+			String password = Value.password;
+
+			Connection con = DriverManager.getConnection(url, user, password);
+
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, con);
+
+			// Đảm bảo thư mục đầu ra tồn tại.
+			File outDir = new File(Value.linkSave);
+			outDir.mkdirs();
+
+			String linkSave = Value.linkSave+"/Report_dsNVTheoDoanhThu_Thang.pdf";
+			// Chạy báo cáo và export ra file PDF.
+			JasperExportManager.exportReportToPdfFile(jasperPrint, linkSave);
+
+			System.out.println("Done!");
+
+	}
+	//
+	public void rp_NVTheoDoanhThu_Ngay(String namString) throws JRException, SQLException {
+			JasperReport jasperReport = JasperCompileManager
+					.compileReport("./baoCao/rp_DoanhThuTheoNV_Ngay.jrxml");
+
+			// Tham số truyền vào báo cáo.
+			Map<String, Object> parameters = new HashMap<String, Object>();
+			parameters.put("date", namString);
+
+			String url = "jdbc:sqlserver://localhost:1433;databasename=QLCuaHangSach";
+			String user = Value.user;
+			String password = Value.password;
+
+			Connection con = DriverManager.getConnection(url, user, password);
+
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, con);
+
+			// Đảm bảo thư mục đầu ra tồn tại.
+			File outDir = new File(Value.linkSave);
+			outDir.mkdirs();
+
+			String linkSave = Value.linkSave+"/Report_dsNVTheoDoanhThu_Ngay.pdf";
+			// Chạy báo cáo và export ra file PDF.
+			JasperExportManager.exportReportToPdfFile(jasperPrint, linkSave);
+
+			System.out.println("Done!");
+
+	}
+//
 	
 }

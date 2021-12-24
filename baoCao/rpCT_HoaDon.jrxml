@@ -66,7 +66,7 @@ WHERE HoaDon.maHD like  $P{value_maHD}]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="294" splitType="Stretch">
+		<band height="327" splitType="Stretch">
 			<staticText>
 				<reportElement x="50" y="5" width="250" height="40" uuid="2b5c4ae0-1d1d-467b-9b42-4a2ea6955104"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -206,12 +206,12 @@ WHERE HoaDon.maHD like  $P{value_maHD}]]>
 				<text><![CDATA[0628 395 960]]></text>
 			</staticText>
 			<line>
-				<reportElement x="40" y="201" width="460" height="1" uuid="27c9e3c3-b57c-4f39-915b-10165d8cf026">
+				<reportElement x="40" y="229" width="460" height="1" uuid="27c9e3c3-b57c-4f39-915b-10165d8cf026">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 			</line>
 			<staticText>
-				<reportElement x="40" y="202" width="160" height="22" uuid="1c17ac68-491f-4066-be4c-5c99cda7d3c5">
+				<reportElement x="40" y="230" width="160" height="22" uuid="1c17ac68-491f-4066-be4c-5c99cda7d3c5">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -220,14 +220,14 @@ WHERE HoaDon.maHD like  $P{value_maHD}]]>
 				<text><![CDATA[Họ và tên khách hàng:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="200" y="202" width="180" height="22" uuid="14f7db6c-483b-4700-ab8a-d31001f13b0f"/>
+				<reportElement x="200" y="230" width="180" height="22" uuid="14f7db6c-483b-4700-ab8a-d31001f13b0f"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tenKH}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="40" y="224" width="100" height="22" uuid="5ab2e6fd-554e-4501-bab5-2b0f86ae2f9f">
+				<reportElement x="40" y="252" width="100" height="22" uuid="5ab2e6fd-554e-4501-bab5-2b0f86ae2f9f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -236,14 +236,14 @@ WHERE HoaDon.maHD like  $P{value_maHD}]]>
 				<text><![CDATA[Số điện thoại: ]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="140" y="224" width="120" height="22" uuid="9608f6ce-4fd2-4512-812d-4e3ae56a37c9"/>
+				<reportElement x="140" y="252" width="120" height="22" uuid="9608f6ce-4fd2-4512-812d-4e3ae56a37c9"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{soDT}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="40" y="246" width="60" height="22" uuid="4fe898b7-6eaa-4fd4-bb00-363bf17be21a">
+				<reportElement x="40" y="274" width="60" height="22" uuid="4fe898b7-6eaa-4fd4-bb00-363bf17be21a">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -252,24 +252,42 @@ WHERE HoaDon.maHD like  $P{value_maHD}]]>
 				<text><![CDATA[Địa chỉ:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="100" y="246" width="200" height="22" uuid="96ad3e3a-66d7-439e-9366-19cf1196548c"/>
+				<reportElement x="100" y="274" width="200" height="22" uuid="96ad3e3a-66d7-439e-9366-19cf1196548c"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{diaChi}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="40" y="270" width="460" height="1" uuid="1e52544f-109d-4382-a789-86e19146bc0c">
+				<reportElement x="40" y="298" width="460" height="1" uuid="1e52544f-109d-4382-a789-86e19146bc0c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 			</line>
 			<staticText>
-				<reportElement x="40" y="271" width="260" height="20" uuid="2388a226-4363-4603-8dcd-3cf75898ace9"/>
+				<reportElement x="40" y="299" width="260" height="20" uuid="2388a226-4363-4603-8dcd-3cf75898ace9"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="12"/>
 				</textElement>
 				<text><![CDATA[Danh sách các sản phẩm đã mua:]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="40" y="201" width="151" height="27" uuid="41a1d728-cb88-4ebb-8604-4a6641089bd0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nhân viên bán hàng:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="201" width="100" height="27" uuid="a77067bd-abc5-48a4-9cc5-783e968c6457">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tenNV}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<columnHeader>

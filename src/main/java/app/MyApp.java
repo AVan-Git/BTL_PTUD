@@ -66,8 +66,11 @@ public class MyApp {
 		try {
 //			report_PDF.rp_HoaDon_TheoNgay("2021-12-04%");
 //			report_PDF.rp_ChiTietHoaDon("HD00016");
-			report_PDF.rp_HoaDon_TheoThang("2021-12%");
-			report_PDF.rp_HoaDon_TheoNam("2021%");
+//			report_PDF.rp_HoaDon_TheoThang("2021-12%");
+//			report_PDF.rp_HoaDon_TheoNam("2021%");
+			report_PDF.rp_NVTheoDoanhThu_Nam("2021%");
+			report_PDF.rp_NVTheoDoanhThu_Thang("2021-12%");
+			report_PDF.rp_NVTheoDoanhThu_Ngay("2021-12-24%");
 			
 		} catch (JRException e) {
 			// TODO Auto-generated catch block
