@@ -1,9 +1,5 @@
-/GUI/
-/META-INF/
-/app/
-/connect/
-/constant/
-/dao/
-/entity/
 /report/
-/swing/
+/app/
+/META-INF/
+/entity/
+/GUI/

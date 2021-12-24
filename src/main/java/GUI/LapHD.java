@@ -961,8 +961,10 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 			if (JOptionPane.showConfirmDialog(this,
 					"Bạn có muốn xóa quyển sách có mã:' " + maSach + " ' có tên là:' " + tenSach + " '" + " không?",
 					"Cảnh báo.", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
-
-				if (dsCt_HoaDon.size() == 1) {
+//chua xong // sai xoas cuoi
+				if (dsCt_HoaDon.get(dsCt_HoaDon.size()).getSach().getMaSach().equals(maSach)) {
+					dsCt_HoaDon.remove(dsCt_HoaDon.size() - 1);
+				} else if (dsCt_HoaDon.size() == 1) {
 					dsCt_HoaDon = new ArrayList<>();
 				} else {
 					for (CT_HoaDon a : dsCt_HoaDon) {
@@ -1046,16 +1048,15 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 		DefaultTableModel dm = (DefaultTableModel) tableDonDat.getModel();
 		dm.getDataVector().removeAllElements();
 		double s = 0;
-		double tong= 0.0;
+		double tong = 0.0;
 
 		if (dsCt_HoaDon.size() > 0) {
 			for (CT_HoaDon a : dsCt_HoaDon) {
-				tong = a.getSoluong()*a.getGiaban();
-				
+				tong = a.getSoluong() * a.getGiaban();
+
 				modelDonDat.addRow(new Object[] {
 //						ma,ten,soLuong, giaBan, tongTien
-						a.getSach().getMaSach(), a.getSach().getTenSach(), a.getSoluong(), a.getGiaban(),
-						tong });
+						a.getSach().getMaSach(), a.getSach().getTenSach(), a.getSoluong(), a.getGiaban(), tong });
 				s += tong;
 			}
 		} else {

@@ -48,6 +48,7 @@ public class CT_HoaDon {
 
 	public void setSoluong(int soluong) {
 		this.soluong = soluong;
+		this.tongTien = giaban*soluong;
 	}
 
 	public HoaDon getHoaDon() {
