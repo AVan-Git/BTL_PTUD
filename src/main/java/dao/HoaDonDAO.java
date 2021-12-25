@@ -43,6 +43,8 @@ public abstract interface HoaDonDAO {
 	 * @return 1 HoaDon
 	 */
 	public HoaDon getHoaDon_Id(String maTim);
+	public int soHoaDon_MocTG(String date);
+	public int soHoaDon_KhoangTG(String date1, String date2);
 
 
 

@@ -38,7 +38,7 @@ import entity.Sach;
  *
  * @author LENOVO
  */
-public class ThongkeHD extends JFrame implements ActionListener ,MouseListener {
+public class ThongkeHD2 extends JFrame implements ActionListener ,MouseListener {
 
 	// Variables declaration - do not modify//GEN-BEGIN:variables
 	private com.toedter.calendar.JDateChooser dateStart;
@@ -77,7 +77,7 @@ public class ThongkeHD extends JFrame implements ActionListener ,MouseListener {
 	/**
 	 * Creates new form ThongkeHD
 	 */
-	public ThongkeHD() {
+	public ThongkeHD2() {
 		initComponents();
 	}
 
@@ -358,20 +358,20 @@ public class ThongkeHD extends JFrame implements ActionListener ,MouseListener {
 				}
 			}
 		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(ThongkeHD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(ThongkeHD2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(ThongkeHD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(ThongkeHD2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(ThongkeHD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(ThongkeHD2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(ThongkeHD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(ThongkeHD2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
 		// </editor-fold>
 
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new ThongkeHD().setVisible(true);
+				new ThongkeHD2().setVisible(true);
 			}
 		});
 	}

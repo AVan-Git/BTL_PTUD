@@ -98,7 +98,7 @@ ORDER BY sum(CT_HoaDon.tongTien) DESC, count(DISTINCT HoaDon.maHD) DESC]]>
 FROM     NhanVien INNER JOIN
                   HoaDon ON NhanVien.maNV = HoaDon.maNV INNER JOIN
                   CT_HoaDon ON HoaDon.maHD = CT_HoaDon.maHD
-WHERE  HoaDon.[ngaylap] like   $P{date} ]]>
+WHERE  HoaDon.[ngaylap] like   $P{date}]]>
 	</queryString>
 	<field name="So HD" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="So HD"/>
@@ -150,7 +150,7 @@ WHERE  HoaDon.[ngaylap] like   $P{date} ]]>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="12"/>
 				</textElement>
-				<text><![CDATA[Danh sách thông kê(top 10 theo số doanh thu):]]></text>
+				<text><![CDATA[Danh sách thông kê( top 10 theo số doanh thu ):]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="0" y="33" width="579" height="30" uuid="8bf6b1b2-21bb-4a76-8462-b2d380c5482f"/>
@@ -164,7 +164,7 @@ WHERE  HoaDon.[ngaylap] like   $P{date} ]]>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="19" isBold="true"/>
 				</textElement>
-				<text><![CDATA[THỐNG KÊ DOANH THU NHÂN VIÊN]]></text>
+				<text><![CDATA[THỐNG KÊ DOANH THU THEO NHÂN VIÊN]]></text>
 			</staticText>
 		</band>
 	</title>

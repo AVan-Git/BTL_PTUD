@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rp_DoanhThuTheoKH_Thang" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cb79f097-894c-4a42-8d6c-29cc2df0f87b">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rp_DoanhThuTheoNV_KTG" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cb79f097-894c-4a42-8d6c-29cc2df0f87b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New_Data_Adapter "/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
@@ -37,22 +37,23 @@
 		<parameter name="sum_SoLuong" class="java.lang.Integer"/>
 		<parameter name="sum_DThu" class="java.lang.Long"/>
 		<parameter name="date1" class="java.lang.String"/>
+		<parameter name="date3" class="java.lang.String"/>
 		<queryString language="SQL">
-			<![CDATA[SELECT  TOP (10) KhachHang.maKH, KhachHang.tenKH, KhachHang.soDT, count(DISTINCT HoaDon.maHD) as 'So HD', sum( CT_HoaDon.soluong) as soluong, sum(CT_HoaDon.tongTien) as tongTien
-FROM     KhachHang INNER JOIN
-                  HoaDon ON KhachHang.maKH = HoaDon.maKH INNER JOIN
+			<![CDATA[SELECT TOP (10) NhanVien.maNV, NhanVien.tenNV, NhanVien.soDT, count(DISTINCT HoaDon.maHD) as 'So HD', sum( CT_HoaDon.soluong) as soluong, sum(CT_HoaDon.tongTien) as tongTien
+FROM     NhanVien INNER JOIN
+                  HoaDon ON NhanVien.maNV = HoaDon.maNV INNER JOIN
                   CT_HoaDon ON HoaDon.maHD = CT_HoaDon.maHD
-WHERE  HoaDon.[ngaylap] like   $P{date1} 
-GROUP BY  KhachHang.maKH, KhachHang.tenKH, KhachHang.soDT
+WHERE  HoaDon.[ngaylap] >=  $P{date1}   AND  HoaDon.[ngaylap] <=   $P{date3} 
+GROUP BY  NhanVien.maNV, NhanVien.tenNV, NhanVien.soDT
 ORDER BY sum(CT_HoaDon.tongTien) DESC, count(DISTINCT HoaDon.maHD) DESC]]>
 		</queryString>
-		<field name="maKH" class="java.lang.String">
-			<property name="com.jaspersoft.studio.field.name" value="maKH"/>
-			<property name="com.jaspersoft.studio.field.label" value="maKH"/>
+		<field name="maNV" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="maNV"/>
+			<property name="com.jaspersoft.studio.field.label" value="maNV"/>
 		</field>
-		<field name="tenKH" class="java.lang.String">
-			<property name="com.jaspersoft.studio.field.name" value="tenKH"/>
-			<property name="com.jaspersoft.studio.field.label" value="tenKH"/>
+		<field name="tenNV" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="tenNV"/>
+			<property name="com.jaspersoft.studio.field.label" value="tenNV"/>
 		</field>
 		<field name="soDT" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="soDT"/>
@@ -70,8 +71,8 @@ ORDER BY sum(CT_HoaDon.tongTien) DESC, count(DISTINCT HoaDon.maHD) DESC]]>
 			<property name="com.jaspersoft.studio.field.name" value="tongTien"/>
 			<property name="com.jaspersoft.studio.field.label" value="tongTien"/>
 		</field>
-		<variable name="maKH1" class="java.lang.Integer" resetType="Column" calculation="Count">
-			<variableExpression><![CDATA[$F{maKH}]]></variableExpression>
+		<variable name="maNV1" class="java.lang.Integer" resetType="Column" calculation="Count">
+			<variableExpression><![CDATA[$F{maNV}]]></variableExpression>
 		</variable>
 		<variable name="So HD1" class="java.lang.Integer" resetType="Column" calculation="Sum">
 			<variableExpression><![CDATA[$F{So HD}]]></variableExpression>
@@ -93,11 +94,13 @@ ORDER BY sum(CT_HoaDon.tongTien) DESC, count(DISTINCT HoaDon.maHD) DESC]]>
 		</variable>
 	</subDataset>
 	<parameter name="date" class="java.lang.String"/>
+	<parameter name="date2" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT  count(DISTINCT HoaDon.maHD) as 'So HD', sum( CT_HoaDon.soluong) as soluong, sum(DISTINCT HoaDon.tongTien) as tongTien
-FROM     CT_HoaDon INNER JOIN
-                  HoaDon ON CT_HoaDon.maHD = HoaDon.maHD
-WHERE  HoaDon.[ngaylap] like  $P{date}]]>
+FROM     NhanVien INNER JOIN
+                  HoaDon ON NhanVien.maNV = HoaDon.maNV INNER JOIN
+                  CT_HoaDon ON HoaDon.maHD = CT_HoaDon.maHD
+WHERE  HoaDon.[ngaylap] >=   $P{date}  AND  HoaDon.[ngaylap] <=   $P{date2} ]]>
 	</queryString>
 	<field name="So HD" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="So HD"/>
@@ -114,11 +117,14 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 	<variable name="sum_soHD" class="java.lang.Integer" calculation="Sum">
 		<variableExpression><![CDATA[$F{So HD}]]></variableExpression>
 	</variable>
+	<variable name="V_date" class="java.lang.String">
+		<variableExpression><![CDATA[$P{date}.toString()]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="103" splitType="Stretch">
+		<band height="102" splitType="Stretch">
 			<staticText>
 				<reportElement x="580" y="2" width="204" height="30" uuid="804bbfde-e69e-4fda-825e-57b94727d067">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -151,33 +157,33 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 				</textElement>
 				<text><![CDATA[Danh sách thông kê( top 10 theo số doanh thu ):]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="0" y="33" width="579" height="30" uuid="8bf6b1b2-21bb-4a76-8462-b2d380c5482f"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="DejaVu Sans" size="19" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["THÁNG "+  $P{date}.substring( 5, 7 )  + " NĂM "+ $P{date}.substring( 0, 4 )]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="0" y="2" width="580" height="30" uuid="5ccd16bc-b772-48b6-a556-34d3513b2fb4"/>
+				<reportElement x="0" y="2" width="580" height="30" uuid="cc7bd507-7b73-444e-ade1-4c50e9dcec94"/>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="19" isBold="true"/>
 				</textElement>
-				<text><![CDATA[THỐNG KÊ DOANH THU THEO KHÁCH HÀNG]]></text>
+				<text><![CDATA[THỐNG KÊ DOANH THU THEO NHÂN VIÊN]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="0" y="33" width="579" height="30" uuid="0cbdc5e7-3c5f-4f71-a322-63203ff146cd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="19" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TỪ NGÀY " +  $P{date}.substring( 8, 10 )  + " / " +  $P{date}.substring( 5, 7 )  + " / "+ $P{date}.substring( 0, 4 )+ "  ĐẾN "+  $P{date2}.substring( 8, 10 )  + " / " +  $P{date2}.substring( 5, 7 )  + " / "+ $P{date2}.substring( 0, 4 )]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<columnHeader>
-		<band height="188" splitType="Stretch">
+		<band height="197" splitType="Stretch">
 			<componentElement>
-				<reportElement x="10" y="10" width="765" height="170" uuid="2d3f7a57-1eaf-477c-a50b-8b99048638a5">
+				<reportElement x="10" y="0" width="765" height="170" uuid="2d3f7a57-1eaf-477c-a50b-8b99048638a5">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Dataset1" uuid="f5853459-8940-4ee6-b0e1-54f7f0d20050">
+					<datasetRun subDataset="Dataset1" uuid="35e7bd6e-096b-42ed-ad83-05924801d783">
 						<datasetParameter name="sum_soHD">
 							<datasetParameterExpression><![CDATA[$F{So HD}]]></datasetParameterExpression>
 						</datasetParameter>
@@ -189,6 +195,9 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 						</datasetParameter>
 						<datasetParameter name="date1">
 							<datasetParameterExpression><![CDATA[$P{date}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="date3">
+							<datasetParameterExpression><![CDATA[$P{date2}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
@@ -221,7 +230,7 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="DejaVu Sans" isBold="true"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$V{maKH1}+1]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$V{maNV1}+1]]></textFieldExpression>
 							</textField>
 						</jr:columnFooter>
 						<jr:detailCell style="Table_TD" height="30">
@@ -230,7 +239,7 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="DejaVu Sans" size="10" isBold="true"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$V{maKH1}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$V{maNV1}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -253,7 +262,7 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="DejaVu Sans" size="10" isBold="true"/>
 								</textElement>
-								<text><![CDATA[Mã KH]]></text>
+								<text><![CDATA[Mã NV]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:tableFooter style="Table_TH" height="40" rowSpan="1"/>
@@ -267,7 +276,7 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 									<font fontName="DejaVu Sans" size="10"/>
 									<paragraph leftIndent="5"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{maKH}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{maNV}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -290,7 +299,7 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="DejaVu Sans" size="10" isBold="true"/>
 								</textElement>
-								<text><![CDATA[Tên khách hàng]]></text>
+								<text><![CDATA[Tên nhân viên]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:tableFooter style="Table_TH" height="40" rowSpan="1">
@@ -308,7 +317,7 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="DejaVu Sans" isBold="true"/>
 								</textElement>
-								<text><![CDATA[Khách hàng còn lại: ]]></text>
+								<text><![CDATA[Nhân viên còn lại]]></text>
 							</staticText>
 						</jr:columnFooter>
 						<jr:detailCell style="Table_TD" height="30">
@@ -320,7 +329,7 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 									<font fontName="DejaVu Sans" size="10"/>
 									<paragraph leftIndent="5"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{tenKH}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{tenNV}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -344,7 +353,7 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="DejaVu Sans" size="10" isBold="true"/>
 								</textElement>
-								<text><![CDATA[Số điện thoại]]></text>
+								<text><![CDATA[số điện thoại]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:tableFooter style="Table_TH" height="40" rowSpan="1">
@@ -383,7 +392,7 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="DejaVu Sans" size="10" isBold="true"/>
 								</textElement>
-								<text><![CDATA[Số hóa đơn dã mua]]></text>
+								<text><![CDATA[Số hóa đơn dã bán]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:tableFooter style="Table_TH" height="40" rowSpan="1">
@@ -499,7 +508,7 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="DejaVu Sans" size="10" isBold="true"/>
 								</textElement>
-								<text><![CDATA[Số sản phẩm đã mua]]></text>
+								<text><![CDATA[Doanh số (số sản phẩm)]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:tableFooter style="Table_TH" height="40" rowSpan="1">
@@ -610,7 +619,7 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="DejaVu Sans" size="10" isBold="true"/>
 								</textElement>
-								<text><![CDATA[Thành tiền]]></text>
+								<text><![CDATA[Doanh thu]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:tableFooter style="Table_TH" height="40" rowSpan="1">

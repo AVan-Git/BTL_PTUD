@@ -37,12 +37,13 @@
 		<parameter name="sum_SoLuong" class="java.lang.Integer"/>
 		<parameter name="sum_DThu" class="java.lang.Long"/>
 		<parameter name="date1" class="java.lang.String"/>
+		<parameter name="date3" class="java.lang.String"/>
 		<queryString language="SQL">
 			<![CDATA[SELECT  TOP (10) KhachHang.maKH, KhachHang.tenKH, KhachHang.soDT, count(DISTINCT HoaDon.maHD) as 'So HD', sum( CT_HoaDon.soluong) as soluong, sum(CT_HoaDon.tongTien) as tongTien
 FROM     KhachHang INNER JOIN
                   HoaDon ON KhachHang.maKH = HoaDon.maKH INNER JOIN
                   CT_HoaDon ON HoaDon.maHD = CT_HoaDon.maHD
-WHERE  HoaDon.[ngaylap] like   $P{date1} 
+WHERE  HoaDon.[ngaylap] >=   $P{date1} AND  HoaDon.[ngaylap] <=   $P{date3} 
 GROUP BY  KhachHang.maKH, KhachHang.tenKH, KhachHang.soDT
 ORDER BY sum(CT_HoaDon.tongTien) DESC, count(DISTINCT HoaDon.maHD) DESC]]>
 		</queryString>
@@ -93,11 +94,12 @@ ORDER BY sum(CT_HoaDon.tongTien) DESC, count(DISTINCT HoaDon.maHD) DESC]]>
 		</variable>
 	</subDataset>
 	<parameter name="date" class="java.lang.String"/>
+	<parameter name="date2" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT  count(DISTINCT HoaDon.maHD) as 'So HD', sum( CT_HoaDon.soluong) as soluong, sum(DISTINCT HoaDon.tongTien) as tongTien
 FROM     CT_HoaDon INNER JOIN
                   HoaDon ON CT_HoaDon.maHD = HoaDon.maHD
-WHERE  HoaDon.[ngaylap] like  $P{date}]]>
+WHERE  HoaDon.[ngaylap] >=   $P{date}  AND  HoaDon.[ngaylap] <=   $P{date2} ]]>
 	</queryString>
 	<field name="So HD" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="So HD"/>
@@ -147,17 +149,10 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 			<staticText>
 				<reportElement x="40" y="70" width="352" height="30" uuid="ebb89015-79d2-4f98-af6a-aca3374db0e9"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="12"/>
+					<font fontName="DejaVu Sans" size="12" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Danh sách thông kê( top 10 theo số doanh thu ):]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="0" y="33" width="579" height="30" uuid="8bf6b1b2-21bb-4a76-8462-b2d380c5482f"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="DejaVu Sans" size="19" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["THÁNG "+  $P{date}.substring( 5, 7 )  + " NĂM "+ $P{date}.substring( 0, 4 )]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="0" y="2" width="580" height="30" uuid="5ccd16bc-b772-48b6-a556-34d3513b2fb4"/>
 				<textElement textAlignment="Center">
@@ -165,6 +160,13 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 				</textElement>
 				<text><![CDATA[THỐNG KÊ DOANH THU THEO KHÁCH HÀNG]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="0" y="33" width="579" height="30" uuid="34d31238-87e2-4184-b8a0-e7e5adc95beb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="19" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TỪ NGÀY " +  $P{date}.substring( 8, 10 )  + " / " +  $P{date}.substring( 5, 7 )  + " / "+ $P{date}.substring( 0, 4 )+ "  ĐẾN "+  $P{date2}.substring( 8, 10 )  + " / " +  $P{date2}.substring( 5, 7 )  + " / "+ $P{date2}.substring( 0, 4 )]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<columnHeader>
@@ -177,7 +179,7 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Dataset1" uuid="f5853459-8940-4ee6-b0e1-54f7f0d20050">
+					<datasetRun subDataset="Dataset1" uuid="17eef83d-f2d1-498f-a595-eb7647c5dbab">
 						<datasetParameter name="sum_soHD">
 							<datasetParameterExpression><![CDATA[$F{So HD}]]></datasetParameterExpression>
 						</datasetParameter>
@@ -189,6 +191,9 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 						</datasetParameter>
 						<datasetParameter name="date1">
 							<datasetParameterExpression><![CDATA[$P{date}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="date3">
+							<datasetParameterExpression><![CDATA[$P{date2}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>

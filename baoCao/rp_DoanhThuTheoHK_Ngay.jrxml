@@ -156,7 +156,7 @@ WHERE  HoaDon.[ngaylap] like  $P{date}]]>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="19" isBold="true"/>
 				</textElement>
-				<text><![CDATA[THỐNG KÊ DOANH THU KHÁCH HÀNG]]></text>
+				<text><![CDATA[THỐNG KÊ DOANH THU THEO KHÁCH HÀNG]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="0" y="33" width="579" height="30" uuid="702da6e3-0a08-442d-b3bc-c52219d20d92"/>

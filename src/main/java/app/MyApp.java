@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.JOptionPane;
+
 import dao.HoaDonDAO;
 import dao.NhanvienDAO;
 import dao.TaiKhoanDAO;
@@ -37,6 +39,13 @@ public class MyApp {
 
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
+		hoaDonDAO = new HoaDonImpl();
+		
+		System.out.println("Complete!");
+		
+		int x = hoaDonDAO.soHoaDon_KhoangTG("2021-12-24", "2021-12-24");
+		System.out.println(x);
+		
 
 //		nhanvienDAO = new NhanvienImpl();
 //		
@@ -61,9 +70,9 @@ public class MyApp {
 //			System.out.println(value.getValue());
 //		});
 		
-		Report_PDF report_PDF = new Report_PDF();
-		
-		try {
+//		Report_PDF report_PDF = new Report_PDF();
+//		
+//		try {
 //			report_PDF.rp_HoaDon_TheoNgay("2021-12-04%");
 //			report_PDF.rp_ChiTietHoaDon("HD00016");
 //			report_PDF.rp_HoaDon_TheoThang("2021-12%");
@@ -71,18 +80,19 @@ public class MyApp {
 //			report_PDF.rp_NVTheoDoanhThu_Nam("2021%");
 //			report_PDF.rp_NVTheoDoanhThu_Thang("2021-12%");
 //			report_PDF.rp_NVTheoDoanhThu_Ngay("2021-12-24%");
-
-			report_PDF.rp_KHTheoDoanhThu_Nam("2021%");
-			report_PDF.rp_KHTheoDoanhThu_Thang("2021-12%");
-			report_PDF.rp_KHTheoDoanhThu_Ngay("2021-12-24%");
-			
-		} catch (JRException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//			JOptionPane.showMessageDialog(null, "Hays chờ ít phút.");
+//			report_PDF.rp_KHTheoDoanhThu_Nam("2021%");
+//			report_PDF.rp_KHTheoDoanhThu_Thang("2021-12%");
+//			report_PDF.rp_KHTheoDoanhThu_Ngay("2021-12-24%");
+//			JOptionPane.showMessageDialog(null, "Đã xong..");
+//			
+//		} catch (JRException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 		
 

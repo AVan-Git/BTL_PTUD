@@ -431,7 +431,7 @@ public class QL extends javax.swing.JFrame {
 
 	private void TKHDActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_TKHDActionPerformed
 		// TODO add your handling code here:
-		new ThongkeHD().setVisible(true);
+		new ThongkeHD2().setVisible(true);
 		this.setVisible(false);
 
 	}// GEN-LAST:event_TKHDActionPerformed

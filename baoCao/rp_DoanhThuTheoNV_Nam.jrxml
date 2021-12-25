@@ -125,7 +125,7 @@ WHERE  HoaDon.[ngaylap] like   $P{date}]]>
 				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="19" isBold="true"/>
 				</textElement>
-				<text><![CDATA[THỐNG KÊ DOANH THU NHÂN VIÊN]]></text>
+				<text><![CDATA[THỐNG KÊ DOANH THU THEO NHÂN VIÊN]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="580" y="2" width="204" height="30" uuid="804bbfde-e69e-4fda-825e-57b94727d067">
@@ -157,7 +157,7 @@ WHERE  HoaDon.[ngaylap] like   $P{date}]]>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="12"/>
 				</textElement>
-				<text><![CDATA[Danh sách thông kê(top 10 theo số doanh thu):]]></text>
+				<text><![CDATA[Danh sách thông kê( top 10 theo số doanh thu ):]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="0" y="33" width="579" height="30" uuid="8bf6b1b2-21bb-4a76-8462-b2d380c5482f"/>

@@ -144,5 +144,47 @@ public class HoaDonImpl implements HoaDonDAO {
 		return null;
 	}
 
+	@Override
+	public int soHoaDon_MocTG(String date) {
+		Session session = sessionFactory.getCurrentSession(); // goi den csdl
+
+		Transaction tr = session.getTransaction(); // giups stop khi co lỗi
+		try {
+			tr.begin(); // bat dau
+			
+			String query = "SELECT COUNT(maKH) FROM     HoaDon WHERE ngaylap like '" + date + "'";
+			
+			int x = (int) session.createNativeQuery(query).getSingleResult();
+
+			tr.commit(); // ket thuc
+			return x;
+		} catch (Exception e) {
+			e.printStackTrace();
+			tr.rollback(); // quay lai khi co loi
+		}
+		return 0;
+	}
+
+	@Override
+	public int soHoaDon_KhoangTG(String date1, String date2) {
+		Session session = sessionFactory.getCurrentSession(); // goi den csdl
+
+		Transaction tr = session.getTransaction(); // giups stop khi co lỗi
+		try {
+			tr.begin(); // bat dau
+			
+			String query = "SELECT COUNT(maKH) FROM     HoaDon WHERE ngaylap >= '"+ date1 +"' AND  ngaylap <= '"+date2+"'";
+			
+			int x = (int) session.createNativeQuery(query).getSingleResult();
+
+			tr.commit(); // ket thuc
+			return x;
+		} catch (Exception e) {
+			e.printStackTrace();
+			tr.rollback(); // quay lai khi co loi
+		}
+		return 0;
+	}
+
 
 }
