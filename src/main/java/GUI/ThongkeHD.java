@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package app;
+package GUI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +21,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-import GUI.QL;
 import GUI.Dialog.DialogCT_HoaDon;
 import constant.Value;
 import dao.HoaDonDAO;
@@ -1222,10 +1221,11 @@ public class ThongkeHD extends JFrame implements ActionListener, MouseListener {
 		DefaultTableModel dm = (DefaultTableModel) table.getModel();
 		dm.getDataVector().removeAllElements();
 
+//		"Mã hóa đơn", "Tên khách hàng", "Tên nhân viên", "Ngày lập", "Số lượng sách", "Tổng tiền" 
 		for (HoaDon a : dsHoaDon) {
 			s += a.getTongTien();
-			modelTable.addRow(new Object[] { a.getMaHD(), a.getKhachHang().getMaKH(), a.getKhachHang().getTenKH(),
-					a.getNhanVien().getTenNV(), a.getNgaylap(), a.getTongTien() });
+			modelTable.addRow(new Object[] { a.getMaHD(), a.getKhachHang().getTenKH(),
+					a.getNhanVien().getTenNV(), a.getNgaylap(), hoaDonDAO.soLuongSach_HD(a.getMaHD()), a.getTongTien() });
 		}
 		txtTong.setText(new DecimalFormat("###,###,###.0").format(s));
 

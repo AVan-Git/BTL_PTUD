@@ -186,5 +186,26 @@ public class HoaDonImpl implements HoaDonDAO {
 		return 0;
 	}
 
+	@Override
+	public int soLuongSach_HD(String maHD) {
+		Session session = sessionFactory.getCurrentSession(); // goi den csdl
+
+		Transaction tr = session.getTransaction(); // giups stop khi co lỗi
+		try {
+			tr.begin(); // bat dau
+			
+			String query = "SELECT  SUM( soluong) FROM     CT_HoaDon WHERE maHD like '"+ maHD +"'";
+			
+			int x = (int) session.createNativeQuery(query).getSingleResult();
+
+			tr.commit(); // ket thuc
+			return x;
+		} catch (Exception e) {
+			e.printStackTrace();
+			tr.rollback(); // quay lai khi co loi
+		}
+		return 0;
+	}
+
 
 }

@@ -184,9 +184,14 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		setUndecorated(true);
+		jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+		jPanel2.setPreferredSize(new java.awt.Dimension(1361, 767));
 
-		jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+		
+		/*jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+		jPanel2.setPreferredSize(new java.awt.Dimension(1361, 767));*/
+		
 		jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 		jLabel2.setText("Lập Hóa Đơn");
 
@@ -664,6 +669,7 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 		setLocationRelativeTo(null);
 
 //      
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		txtTongTien.setEditable(false);
 		if (tk == null) {
 			System.out.println("hãy chạy từ đăng nhập");

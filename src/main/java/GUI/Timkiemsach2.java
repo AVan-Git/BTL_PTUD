@@ -62,6 +62,8 @@ public class Timkiemsach2 extends JFrame implements ActionListener {
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		setUndecorated(true);
+		jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+		jPanel2.setPreferredSize(new java.awt.Dimension(1361, 767));
 
 		jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 		jLabel5.setText("Tra cứu sách");

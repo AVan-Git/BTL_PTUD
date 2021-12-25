@@ -107,11 +107,13 @@ public class DangNhap extends JFrame implements ActionListener {
 
 		pack();
 		setLocationRelativeTo(null);
+		 
 //      
 		btnDangNhap.addActionListener(this);
 		btnThoat.addActionListener(this);
 		txtUser.addActionListener(this);
 		txtPass.addActionListener(this);
+		 
 
 	}// </editor-fold>//GEN-END:initComponents
 

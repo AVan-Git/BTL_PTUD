@@ -71,6 +71,8 @@ public class QLKH_LapHD extends JFrame implements ActionListener, MouseListener 
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+		jPanel1.setPreferredSize(new java.awt.Dimension(1361, 767));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         jLabel1.setText("Quản Lý Khách Hàng");
@@ -282,6 +284,7 @@ public class QLKH_LapHD extends JFrame implements ActionListener, MouseListener 
 		table.setDefaultEditor(Object.class, null);
 //	
 		addComboBox();
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 
 	}// </editor-fold>//GEN-END:initComponents
 

@@ -88,9 +88,12 @@ public class Timkiemnhanvien extends JFrame implements ActionListener {
         btnTimKiem = new javax.swing.JButton();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		setUndecorated(true);
+		jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+		jPanel1.setPreferredSize(new java.awt.Dimension(1361, 767));
 
-		jPanel1.setBackground(new java.awt.Color(153, 255, 153));
-		jPanel1.setPreferredSize(new java.awt.Dimension(1472, 805));
+		
+		//jPanel1.setPreferredSize(new java.awt.Dimension(1472, 805));
 
 		jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
 		jLabel1.setText("Tìm Kiếm Nhân Viên");

@@ -60,7 +60,10 @@ public class QLNXB extends JFrame implements ActionListener, MouseListener {
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		setUndecorated(true);
-
+		
+		jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+		jPanel1.setPreferredSize(new java.awt.Dimension(1361, 767));
+		
 		jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 		jLabel1.setText("Quản Lý Nhà Xuất Bản");
 
@@ -210,6 +213,7 @@ public class QLNXB extends JFrame implements ActionListener, MouseListener {
 		addTable_sql(nhaXBDAO.getDsNhaXuatBan());
 
 		table.setDefaultEditor(Object.class, null);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 
 	}// </editor-fold>//GEN-END:initComponents
 

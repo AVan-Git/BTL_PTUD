@@ -67,7 +67,10 @@ public class Timkiemkhach extends JFrame  implements ActionListener {
         txtEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
+        setUndecorated(true);
+		jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+		jPanel1.setPreferredSize(new java.awt.Dimension(1361, 767));
+		
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 102, 0));
         jLabel2.setText("Họ Tên");
@@ -258,6 +261,7 @@ public class Timkiemkhach extends JFrame  implements ActionListener {
 
 		table.setDefaultEditor(Object.class, null);
 //        addComboBox();
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
         
     }// </editor-fold>//GEN-END:initComponents
 

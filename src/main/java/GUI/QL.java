@@ -327,6 +327,7 @@ public class QL extends javax.swing.JFrame {
 
 		// =========================================================
 		setThôngTinNV(tk);
+		
 
 	}// </editor-fold>
 
@@ -431,7 +432,7 @@ public class QL extends javax.swing.JFrame {
 
 	private void TKHDActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_TKHDActionPerformed
 		// TODO add your handling code here:
-		new ThongkeHD2().setVisible(true);
+		new ThongkeHD().setVisible(true);
 		this.setVisible(false);
 
 	}// GEN-LAST:event_TKHDActionPerformed

@@ -64,6 +64,8 @@ public class TimkiemTG extends JFrame implements ActionListener {
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		setUndecorated(true);
+		jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+		jPanel1.setPreferredSize(new java.awt.Dimension(1361, 767));
 
 		jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 		jLabel1.setText("Tra cứu tác giả");
@@ -229,7 +231,7 @@ public class TimkiemTG extends JFrame implements ActionListener {
 		addTable_sql(tacGiaDAO.getDsTacGia());
 
 		table.setDefaultEditor(Object.class, null);
-
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void XActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_XActionPerformed

@@ -82,7 +82,8 @@ public class QLNV extends javax.swing.JFrame implements ActionListener, MouseLis
 		setBackground(new java.awt.Color(204, 204, 204));
 		setUndecorated(true);
 
-		jPanel1.setBackground(new java.awt.Color(240,240,240));
+		jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+		jPanel1.setPreferredSize(new java.awt.Dimension(1361, 767));
 
 		jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
 		jLabel1.setText("Quản Lý Nhân Viên");

@@ -55,6 +55,8 @@ public class TimkiemNXB extends JFrame implements ActionListener{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        
+		
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Tra cứu thông tin nhà xuất bản");
@@ -176,7 +178,9 @@ public class TimkiemNXB extends JFrame implements ActionListener{
         
         addTable_sql(nhaXBDAO.getDsNhaXuatBan());
 
-		table.setDefaultEditor(Object.class, null);        
+		table.setDefaultEditor(Object.class, null);  
+		
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
     }// </editor-fold>//GEN-END:initComponents
 
 

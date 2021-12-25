@@ -43,7 +43,7 @@ public class MyApp {
 		
 		System.out.println("Complete!");
 		
-		int x = hoaDonDAO.soHoaDon_KhoangTG("2021-12-24", "2021-12-24");
+		int x = hoaDonDAO.soLuongSach_HD("HD00026");
 		System.out.println(x);
 		
 

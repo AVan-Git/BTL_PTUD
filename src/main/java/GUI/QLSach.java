@@ -76,6 +76,10 @@ public class QLSach extends JFrame implements ActionListener, MouseListener {
 		cbbNhaXB = new javax.swing.JComboBox<>();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		this.setUndecorated(true);
+		
+		jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+		jPanel1.setPreferredSize(new java.awt.Dimension(1361, 767));
 
 		jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 		jLabel1.setText("Quản lý sách");

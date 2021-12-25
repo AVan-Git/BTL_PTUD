@@ -72,7 +72,10 @@ public class QLTG extends JFrame implements ActionListener, MouseListener {
 		txtTieuSu = new javax.swing.JTextArea();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-		setUndecorated(true);
+		this.setUndecorated(true);
+		
+		jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+		jPanel1.setPreferredSize(new java.awt.Dimension(1361, 767));
 
 		jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 		jLabel1.setText("Quản Lý Tác Giả");
@@ -273,7 +276,7 @@ public class QLTG extends JFrame implements ActionListener, MouseListener {
 		addTable_sql(tacGiaDAO.getDsTacGia());
 
 		table.setDefaultEditor(Object.class, null);
-
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		addComboBox();
 	}// </editor-fold>//GEN-END:initComponents
 

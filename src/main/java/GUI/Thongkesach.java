@@ -83,7 +83,8 @@ public class Thongkesach extends JFrame implements ActionListener {
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		setUndecorated(true);
-
+		jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+		jPanel1.setPreferredSize(new java.awt.Dimension(1361, 767));
 		btnHetHang.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 		btnHetHang.setForeground(new java.awt.Color(255, 102, 0));
 		btnHetHang.setText("Sách hết hàng");

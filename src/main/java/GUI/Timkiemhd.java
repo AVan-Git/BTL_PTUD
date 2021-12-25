@@ -75,7 +75,7 @@ public class Timkiemhd extends JFrame implements ActionListener, MouseListener {
 	// Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
 
-//		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+//		
 		jPanel1 = new javax.swing.JPanel();
 		X = new javax.swing.JButton();
 		jLabel1 = new javax.swing.JLabel();
@@ -95,6 +95,8 @@ public class Timkiemhd extends JFrame implements ActionListener, MouseListener {
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		setUndecorated(true);
+		jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+		jPanel1.setPreferredSize(new java.awt.Dimension(1361, 767));
 
 		X.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 		X.setForeground(new java.awt.Color(255, 0, 0));
@@ -218,6 +220,7 @@ public class Timkiemhd extends JFrame implements ActionListener, MouseListener {
 		dateNgay.setMaxSelectableDate(getHienTai());
 		setLocationRelativeTo(null);
 //      
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		txtKhachHang.addActionListener(this);
 		txtMaHD.addActionListener(this);
 		txtNhanVien.addActionListener(this);

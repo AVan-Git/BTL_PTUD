@@ -33,6 +33,9 @@ public class TTHD extends javax.swing.JFrame {
         X = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+		jPanel1.setPreferredSize(new java.awt.Dimension(1361, 767));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

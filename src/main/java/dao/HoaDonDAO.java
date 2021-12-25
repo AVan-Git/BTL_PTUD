@@ -46,6 +46,8 @@ public abstract interface HoaDonDAO {
 	public int soHoaDon_MocTG(String date);
 	public int soHoaDon_KhoangTG(String date1, String date2);
 
+	public int soLuongSach_HD(String maHD);
+
 
 
 	
