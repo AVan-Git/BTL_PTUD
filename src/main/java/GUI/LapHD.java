@@ -961,20 +961,16 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 			if (JOptionPane.showConfirmDialog(this,
 					"Bạn có muốn xóa quyển sách có mã:' " + maSach + " ' có tên là:' " + tenSach + " '" + " không?",
 					"Cảnh báo.", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION) {
-//chua xong // sai xoas cuoi
-				if (dsCt_HoaDon.get(dsCt_HoaDon.size()).getSach().getMaSach().equals(maSach)) {
-					dsCt_HoaDon.remove(dsCt_HoaDon.size() - 1);
-				} else if (dsCt_HoaDon.size() == 1) {
-					dsCt_HoaDon = new ArrayList<>();
-				} else {
-					for (CT_HoaDon a : dsCt_HoaDon) {
-						if (a.getSach().getMaSach().equals(maSach)) {
-							dsCt_HoaDon.remove(a);
-						}
+				CT_HoaDon ct_HoaDon = new CT_HoaDon();
+				for (int i = 0; i < dsCt_HoaDon.size(); i++) {
+					ct_HoaDon = dsCt_HoaDon.get(i);
+					if (ct_HoaDon.getSach().getMaSach().equals(maSach)) {
+						dsCt_HoaDon.remove(ct_HoaDon);
 					}
-				}
 
+				}
 				addTable_HoaDon(dsCt_HoaDon);
+				tableDonDat.setSelectionMode(0);
 			}
 		} else {
 			JOptionPane.showMessageDialog(this, "Hãy chọn quyển sách mà bạn muốn xóa trong bảng hóa đơn. \nPlease.");
@@ -1035,6 +1031,8 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 						spinnerModel.setValue(0);
 						addTable_HoaDon(dsCt_HoaDon);
 					}
+				}else {
+					JOptionPane.showMessageDialog(this, "Sản phẩm này đã có trong hóa đơn.");
 				}
 
 				return true;
