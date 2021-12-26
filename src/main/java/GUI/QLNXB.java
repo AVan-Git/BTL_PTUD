@@ -30,6 +30,7 @@ public class QLNXB extends JFrame implements ActionListener, MouseListener {
 	 */
 	public QLNXB() {
 		initComponents();
+		this.setLocationRelativeTo(null);
 	}
 
 	/**

@@ -63,6 +63,7 @@ public class Timkiemhd extends JFrame implements ActionListener, MouseListener {
 
 	public Timkiemhd() {
 		initComponents();
+		this.setLocationRelativeTo(null);
 	}
 
 	/**

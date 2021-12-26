@@ -40,6 +40,7 @@ public class QLNV extends javax.swing.JFrame implements ActionListener, MouseLis
 	 */
 	public QLNV() {
 		initComponents();
+		this.setLocationRelativeTo(null);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 	}
 

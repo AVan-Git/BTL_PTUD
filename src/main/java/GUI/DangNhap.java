@@ -53,12 +53,12 @@ public class DangNhap extends JFrame implements ActionListener {
 
 		jPanel2.setLayout(null);
 
-		jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+		jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
 		jLabel3.setText("Tên đăng nhập");
 		jPanel2.add(jLabel3);
 		jLabel3.setBounds(210, 70, 135, 22);
 
-		jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+		jLabel5.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
 		jLabel5.setText("Mật Khẩu");
 		jPanel2.add(jLabel5);
 		jLabel5.setBounds(210, 160, 100, 20);
@@ -96,14 +96,18 @@ public class DangNhap extends JFrame implements ActionListener {
 		jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/nenSach.jpg"))); // NOI18N
 
 		jPanel2.add(jLabel1);
-		jLabel1.setBounds(-20, 0, 830, 420);
+        jLabel1.setBounds(-20, 0, 830, 420);
 
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE));
-		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+        );
 
 		pack();
 		setLocationRelativeTo(null);

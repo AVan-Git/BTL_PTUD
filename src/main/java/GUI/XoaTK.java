@@ -48,6 +48,7 @@ public class XoaTK extends JFrame implements ActionListener {
 	 */
 	public XoaTK() {
 		initComponents();
+		this.setLocationRelativeTo(null);
 	}
 
 	/**

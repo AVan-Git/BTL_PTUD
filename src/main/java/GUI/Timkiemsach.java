@@ -30,6 +30,7 @@ public class Timkiemsach extends JFrame implements ActionListener {
 	 */
 	public Timkiemsach() {
 		initComponents();
+		this.setLocationRelativeTo(null);
 	}
 
 	/**

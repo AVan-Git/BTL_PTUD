@@ -29,6 +29,7 @@ public class TimkiemNXB extends JFrame implements ActionListener{
      */
     public TimkiemNXB() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

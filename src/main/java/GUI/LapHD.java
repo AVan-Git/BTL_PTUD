@@ -254,7 +254,7 @@ public class LapHD extends JFrame implements ActionListener, MouseListener, Chan
 		btnRefreshSach.setText("Làm mới");
 
 		spinnerModel = new SpinnerNumberModel(0, // value
-				0, 100, 1);
+				0, 1000, 1);
 		spnSoLuong = new JSpinner(spinnerModel);
 		spnSoLuong.setRequestFocusEnabled(false);
 

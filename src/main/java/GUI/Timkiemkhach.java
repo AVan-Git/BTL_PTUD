@@ -33,6 +33,7 @@ public class Timkiemkhach extends JFrame  implements ActionListener {
      */
     public Timkiemkhach() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

@@ -15,6 +15,7 @@ public class TTHD extends javax.swing.JFrame {
      */
     public TTHD() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

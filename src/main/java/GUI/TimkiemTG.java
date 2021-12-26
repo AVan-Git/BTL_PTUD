@@ -32,6 +32,7 @@ public class TimkiemTG extends JFrame implements ActionListener {
 	 */
 	public TimkiemTG() {
 		initComponents();
+		this.setLocationRelativeTo(null);
 	}
 
 	/**

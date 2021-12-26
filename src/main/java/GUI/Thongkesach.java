@@ -56,6 +56,7 @@ public class Thongkesach extends JFrame implements ActionListener {
 	 */
 	public Thongkesach() {
 		initComponents();
+		this.setLocationRelativeTo(null);
 	}
 
 	/**

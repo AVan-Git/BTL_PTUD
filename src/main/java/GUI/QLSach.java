@@ -37,6 +37,7 @@ public class QLSach extends JFrame implements ActionListener, MouseListener {
 	 */
 	public QLSach() {
 		initComponents();
+		this.setLocationRelativeTo(null);
 	}
 
 	/**

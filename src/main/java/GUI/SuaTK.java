@@ -51,6 +51,7 @@ public class SuaTK extends JFrame implements ActionListener {
 	 */
 	public SuaTK() {
 		initComponents();
+		this.setLocationRelativeTo(null);
 	}
 
 	/**

@@ -36,6 +36,7 @@ public class QLTG extends JFrame implements ActionListener, MouseListener {
 	 */
 	public QLTG() {
 		initComponents();
+		this.setLocationRelativeTo(null);
 	}
 
 	/**

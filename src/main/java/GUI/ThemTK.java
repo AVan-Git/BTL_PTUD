@@ -61,6 +61,7 @@ public class ThemTK extends JFrame implements ActionListener {
 	 */
 	public ThemTK() {
 		initComponents();
+		this.setLocationRelativeTo(null);
 	}
 
 	/**
@@ -490,7 +491,7 @@ public class ThemTK extends JFrame implements ActionListener {
 		List<NhanVien> dsNhanVien = nhanvienDAO.getDsNhanVien_0_NguoiQL();
 
 		for (NhanVien nv : dsNhanVien) {
-			if (nv.getMaNV().equals(nvQL.getMaNV())) {
+			if (nv.getMaNV().equals("NV00001")) {
 				continue;
 			}
 			String a = nv.getMaNV().substring(2, 7) + " - " + nv.getTenNV();

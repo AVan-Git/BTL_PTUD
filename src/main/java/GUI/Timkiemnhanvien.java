@@ -34,6 +34,7 @@ public class Timkiemnhanvien extends JFrame implements ActionListener {
 	 */
 	public Timkiemnhanvien() {
 		initComponents();
+		this.setLocationRelativeTo(null);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		X.addActionListener(this);
 

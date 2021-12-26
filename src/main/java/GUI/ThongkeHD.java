@@ -661,6 +661,14 @@ public class ThongkeHD extends JFrame implements ActionListener, MouseListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object o = e.getSource();
+		
+//		if (o.equals(chk_KTG)) {
+//			System.out.println("chk_KTG");
+//		}else if (o.equals(chkNam)) {
+//
+//			System.out.println("chkNam");
+//		}
+		
 		if (o.equals(btnTheoKH)) {
 			System.err.println("btnTheoKH()");
 			getTKTheoKhachHang();
@@ -700,7 +708,8 @@ public class ThongkeHD extends JFrame implements ActionListener, MouseListener {
 
 					try {
 						JOptionPane.showMessageDialog(this, "Hãy chờ ít phút.");
-						rp.rp_KHTheoDoanhThu_KTG(dformat2.format(dateBD), dformat2.format(dateKT));
+//						rp.rp_KHTheoDoanhThu_KTG(dformat2.format(dateBD), dformat2.format(dateKT));
+						rp.rp_HoaDon_TheoNam( dformat2.format(dateKT)+"%");
 
 						JOptionPane.showMessageDialog(this,
 								"Xuất báo cáo thành công. ( ở thư mục " + Value.linkSave + " )");
@@ -737,7 +746,7 @@ public class ThongkeHD extends JFrame implements ActionListener, MouseListener {
 							if (hoaDonDAO.soHoaDon_MocTG(value_Date) > 0) {
 								try {
 									JOptionPane.showMessageDialog(this, "Hãy chờ ít phút.");
-									rp.rp_KHTheoDoanhThu_Nam(value_Date);
+									rp.rp_HoaDon_TheoNgay(value_Date);
 									JOptionPane.showMessageDialog(this,
 											"Xuất báo cáo thành công. ( ở thư mục " + Value.linkSave + " )");
 									
@@ -761,7 +770,7 @@ public class ThongkeHD extends JFrame implements ActionListener, MouseListener {
 							if (hoaDonDAO.soHoaDon_MocTG(value_Date) > 0) {
 								try {
 									JOptionPane.showMessageDialog(this, "Hãy chờ ít phút.");
-									rp.rp_KHTheoDoanhThu_Nam(value_Date);
+									rp.rp_HoaDon_TheoThang(value_Date);
 									JOptionPane.showMessageDialog(this,
 											"Xuất báo cáo thành công. ( ở thư mục " + Value.linkSave + " )");
 								} catch (Exception e) {
@@ -783,7 +792,7 @@ public class ThongkeHD extends JFrame implements ActionListener, MouseListener {
 						if (hoaDonDAO.soHoaDon_MocTG(value_Date) > 0) {
 							try {
 								JOptionPane.showMessageDialog(this, "Hãy chờ ít phút.");
-								rp.rp_KHTheoDoanhThu_Nam(value_Date);
+								rp.rp_HoaDon_TheoNam(value_Date);
 								JOptionPane.showMessageDialog(this,
 										"Xuất báo cáo thành công. ( ở thư mục " + Value.linkSave + " )");
 							} catch (Exception e) {
@@ -824,7 +833,7 @@ public class ThongkeHD extends JFrame implements ActionListener, MouseListener {
 
 					try {
 						JOptionPane.showMessageDialog(this, "Hãy chờ ít phút.");
-						rp.rp_KHTheoDoanhThu_KTG(dformat2.format(dateBD), dformat2.format(dateKT));
+						rp.rp_SPTheoDoanhThu_KTG(dformat2.format(dateBD), dformat2.format(dateKT));
 
 						JOptionPane.showMessageDialog(this,
 								"Xuất báo cáo thành công. ( ở thư mục " + Value.linkSave + " )");
@@ -861,7 +870,7 @@ public class ThongkeHD extends JFrame implements ActionListener, MouseListener {
 							if (hoaDonDAO.soHoaDon_MocTG(value_Date) > 0) {
 								try {
 									JOptionPane.showMessageDialog(this, "Hãy chờ ít phút.");
-									rp.rp_KHTheoDoanhThu_Nam(value_Date);
+									rp.rp_SPTheoDoanhThu_Nam(value_Date);
 									JOptionPane.showMessageDialog(this,
 											"Xuất báo cáo thành công. ( ở thư mục " + Value.linkSave + " )");
 									
@@ -885,7 +894,7 @@ public class ThongkeHD extends JFrame implements ActionListener, MouseListener {
 							if (hoaDonDAO.soHoaDon_MocTG(value_Date) > 0) {
 								try {
 									JOptionPane.showMessageDialog(this, "Hãy chờ ít phút.");
-									rp.rp_KHTheoDoanhThu_Nam(value_Date);
+									rp.rp_SPTheoDoanhThu_Nam(value_Date);
 									JOptionPane.showMessageDialog(this,
 											"Xuất báo cáo thành công. ( ở thư mục " + Value.linkSave + " )");
 								} catch (Exception e) {
@@ -907,7 +916,7 @@ public class ThongkeHD extends JFrame implements ActionListener, MouseListener {
 						if (hoaDonDAO.soHoaDon_MocTG(value_Date) > 0) {
 							try {
 								JOptionPane.showMessageDialog(this, "Hãy chờ ít phút.");
-								rp.rp_KHTheoDoanhThu_Nam(value_Date);
+								rp.rp_SPTheoDoanhThu_Nam(value_Date);
 								JOptionPane.showMessageDialog(this,
 										"Xuất báo cáo thành công. ( ở thư mục " + Value.linkSave + " )");
 							} catch (Exception e) {
@@ -948,7 +957,7 @@ public class ThongkeHD extends JFrame implements ActionListener, MouseListener {
 
 					try {
 						JOptionPane.showMessageDialog(this, "Hãy chờ ít phút.");
-						rp.rp_KHTheoDoanhThu_KTG(dformat2.format(dateBD), dformat2.format(dateKT));
+						rp.rp_NVTheoDoanhThu_KTG(dformat2.format(dateBD), dformat2.format(dateKT));
 
 						JOptionPane.showMessageDialog(this,
 								"Xuất báo cáo thành công. ( ở thư mục " + Value.linkSave + " )");
@@ -985,7 +994,7 @@ public class ThongkeHD extends JFrame implements ActionListener, MouseListener {
 							if (hoaDonDAO.soHoaDon_MocTG(value_Date) > 0) {
 								try {
 									JOptionPane.showMessageDialog(this, "Hãy chờ ít phút.");
-									rp.rp_KHTheoDoanhThu_Nam(value_Date);
+									rp.rp_NVTheoDoanhThu_Ngay(value_Date);
 									JOptionPane.showMessageDialog(this,
 											"Xuất báo cáo thành công. ( ở thư mục " + Value.linkSave + " )");
 									
@@ -1009,7 +1018,7 @@ public class ThongkeHD extends JFrame implements ActionListener, MouseListener {
 							if (hoaDonDAO.soHoaDon_MocTG(value_Date) > 0) {
 								try {
 									JOptionPane.showMessageDialog(this, "Hãy chờ ít phút.");
-									rp.rp_KHTheoDoanhThu_Nam(value_Date);
+									rp.rp_NVTheoDoanhThu_Nam(value_Date);
 									JOptionPane.showMessageDialog(this,
 											"Xuất báo cáo thành công. ( ở thư mục " + Value.linkSave + " )");
 								} catch (Exception e) {
@@ -1031,7 +1040,7 @@ public class ThongkeHD extends JFrame implements ActionListener, MouseListener {
 						if (hoaDonDAO.soHoaDon_MocTG(value_Date) > 0) {
 							try {
 								JOptionPane.showMessageDialog(this, "Hãy chờ ít phút.");
-								rp.rp_KHTheoDoanhThu_Nam(value_Date);
+								rp.rp_NVTheoDoanhThu_Nam(value_Date);
 								JOptionPane.showMessageDialog(this,
 										"Xuất báo cáo thành công. ( ở thư mục " + Value.linkSave + " )");
 							} catch (Exception e) {
